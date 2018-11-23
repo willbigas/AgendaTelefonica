@@ -5,7 +5,7 @@
  */
 package br.com.view;
 
-import br.com.agendatelefonica.PrincipalComSwing;
+import br.com.view.*;
 import br.com.dao.TipoContatoDao;
 import br.com.daoImpl.TipoContatoDaoImpl;
 import br.com.entidade.TipoContato;
@@ -116,6 +116,8 @@ public class FrameCadastroTipoContato extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(FrameCadastroTipoContato.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

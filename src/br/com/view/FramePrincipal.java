@@ -5,16 +5,17 @@
  */
 package br.com.view;
 
-import br.com.agendatelefonica.PrincipalComSwing;
+import br.com.agendatelefonica.PrincipalAgenda;
+
 
 /**
  *
- * @author William
+ * @author Felipe
  */
 public class FramePrincipal extends javax.swing.JFrame {
 
     /**
-     * Creates new form PainelPrincipal
+     * Creates new form FramePrincipal
      */
     public FramePrincipal() {
         initComponents();
@@ -29,90 +30,41 @@ public class FramePrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jToolBar1 = new javax.swing.JToolBar();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu2 = new javax.swing.JMenu();
         jMenuBar1 = new javax.swing.JMenuBar();
-        menuContato = new javax.swing.JMenu();
-        menuContatoCadastrar = new javax.swing.JMenuItem();
-        menuContatoVisualizar = new javax.swing.JMenuItem();
-        menuContatoEditar = new javax.swing.JMenuItem();
-        menuContatoExcluir = new javax.swing.JMenuItem();
-        menuTipoContato = new javax.swing.JMenu();
-        menuTipoContatoCriar = new javax.swing.JMenuItem();
-        menuTipoContatoVisualizar = new javax.swing.JMenuItem();
-        menuTipoContatoEditar = new javax.swing.JMenuItem();
-        menuTipoContatoExcluir = new javax.swing.JMenuItem();
-        menuExportar = new javax.swing.JMenu();
-        menuExportarListaSimples = new javax.swing.JMenuItem();
-        menuExportarPorTipoContato = new javax.swing.JMenuItem();
-        menuExportarTipoContatoPorNome = new javax.swing.JMenuItem();
-
-        jToolBar1.setRollover(true);
-
-        jMenu1.setText("File");
-        jMenuBar2.add(jMenu1);
-
-        jMenu2.setText("Edit");
-        jMenuBar2.add(jMenu2);
+        menuCadastro = new javax.swing.JMenu();
+        menuItemContato = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        menuEditar = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        menuContato.setText("Contato");
-
-        menuContatoCadastrar.setText("Cadastrar");
-        menuContatoCadastrar.addActionListener(new java.awt.event.ActionListener() {
+        menuCadastro.setText("Cadastro");
+        menuCadastro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuContatoCadastrarActionPerformed(evt);
+                menuCadastroActionPerformed(evt);
             }
         });
-        menuContato.add(menuContatoCadastrar);
 
-        menuContatoVisualizar.setText("Visualizar");
-        menuContato.add(menuContatoVisualizar);
-
-        menuContatoEditar.setText("Editar");
-        menuContato.add(menuContatoEditar);
-
-        menuContatoExcluir.setText("Excluir");
-        menuContato.add(menuContatoExcluir);
-
-        jMenuBar1.add(menuContato);
-
-        menuTipoContato.setText("Tipo de Contato");
-
-        menuTipoContatoCriar.setText("Criar");
-        menuTipoContatoCriar.addActionListener(new java.awt.event.ActionListener() {
+        menuItemContato.setText("Contato");
+        menuItemContato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuTipoContatoCriarActionPerformed(evt);
+                menuItemContatoActionPerformed(evt);
             }
         });
-        menuTipoContato.add(menuTipoContatoCriar);
+        menuCadastro.add(menuItemContato);
 
-        menuTipoContatoVisualizar.setText("Visualizar");
-        menuTipoContato.add(menuTipoContatoVisualizar);
+        jMenuItem1.setText("TipoContato");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        menuCadastro.add(jMenuItem1);
 
-        menuTipoContatoEditar.setText("Editar");
-        menuTipoContato.add(menuTipoContatoEditar);
+        jMenuBar1.add(menuCadastro);
 
-        menuTipoContatoExcluir.setText("Excluir");
-        menuTipoContato.add(menuTipoContatoExcluir);
-
-        jMenuBar1.add(menuTipoContato);
-
-        menuExportar.setText("Exportar");
-
-        menuExportarListaSimples.setText("Simples");
-        menuExportar.add(menuExportarListaSimples);
-
-        menuExportarPorTipoContato.setText("Contato x TipoContato");
-        menuExportar.add(menuExportarPorTipoContato);
-
-        menuExportarTipoContatoPorNome.setText("Contato x TipoContato (Nome)");
-        menuExportar.add(menuExportarTipoContatoPorNome);
-
-        jMenuBar1.add(menuExportar);
+        menuEditar.setText("Edit");
+        jMenuBar1.add(menuEditar);
 
         setJMenuBar(jMenuBar1);
 
@@ -120,26 +72,27 @@ public class FramePrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 1074, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 597, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void menuContatoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuContatoCadastrarActionPerformed
-        // TODO add your handling code here:
-        PrincipalComSwing.frameCadastroContato();
+    private void menuCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCadastroActionPerformed
+    }//GEN-LAST:event_menuCadastroActionPerformed
 
-    }//GEN-LAST:event_menuContatoCadastrarActionPerformed
+    private void menuItemContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemContatoActionPerformed
+        PrincipalAgenda.listarContatos();
+    }//GEN-LAST:event_menuItemContatoActionPerformed
 
-    private void menuTipoContatoCriarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuTipoContatoCriarActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        PrincipalComSwing.frameCadastroTipoContato();
-    }//GEN-LAST:event_menuTipoContatoCriarActionPerformed
+        PrincipalAgenda.frameCadastroTipoContato();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,24 +131,10 @@ public class FramePrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JMenu menuContato;
-    private javax.swing.JMenuItem menuContatoCadastrar;
-    private javax.swing.JMenuItem menuContatoEditar;
-    private javax.swing.JMenuItem menuContatoExcluir;
-    private javax.swing.JMenuItem menuContatoVisualizar;
-    private javax.swing.JMenu menuExportar;
-    private javax.swing.JMenuItem menuExportarListaSimples;
-    private javax.swing.JMenuItem menuExportarPorTipoContato;
-    private javax.swing.JMenuItem menuExportarTipoContatoPorNome;
-    private javax.swing.JMenu menuTipoContato;
-    private javax.swing.JMenuItem menuTipoContatoCriar;
-    private javax.swing.JMenuItem menuTipoContatoEditar;
-    private javax.swing.JMenuItem menuTipoContatoExcluir;
-    private javax.swing.JMenuItem menuTipoContatoVisualizar;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenu menuCadastro;
+    private javax.swing.JMenu menuEditar;
+    private javax.swing.JMenuItem menuItemContato;
     // End of variables declaration//GEN-END:variables
 }

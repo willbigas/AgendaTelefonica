@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.negocio_backup;
+package br.com.negocio;
 
 import br.com.entidade.Contato;
 import br.com.entidade.Telefone;

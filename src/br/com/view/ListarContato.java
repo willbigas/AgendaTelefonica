@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.view_backup;
+package br.com.view;
 
 
-import br.com.agendatelefonica_backup.PrincipalAgenda;
+import br.com.agendatelefonica.PrincipalAgenda;
 import br.com.entidade.Contato;
-import br.com.negocio_backup.ManterContatoNegocio;
+import br.com.negocio.ManterContatoNegocio;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;

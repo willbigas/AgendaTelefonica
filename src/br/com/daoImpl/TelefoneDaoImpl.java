@@ -29,8 +29,8 @@ public class TelefoneDaoImpl implements TelefoneDao {
         try {
             conexao = SessionFactory.getConnection();
             PreparedStatement statement = conexao.prepareStatement("insert into telefone (ddd , numero , id_contato) values (? , ? , ?)", Statement.RETURN_GENERATED_KEYS);
-            statement.setInt(1, tel.getDdd());
-            statement.setInt(2, tel.getNumero());
+            statement.setString(1, tel.getDdd());
+            statement.setString(2, tel.getNumero());
             if (tel.getContato() == null) {
                 statement.setNull(3, Types.INTEGER);
             } else {
@@ -58,8 +58,8 @@ public class TelefoneDaoImpl implements TelefoneDao {
             conexao = SessionFactory.getConnection();
             PreparedStatement statement = conexao.prepareStatement(
                     "update telefone set ddd = ? , set numero = ? , set id_contato = ? where id = ? ");
-            statement.setInt(1, tel.getDdd());
-            statement.setInt(2, tel.getNumero());
+            statement.setString(1, tel.getDdd());
+            statement.setString(2, tel.getNumero());
             if (tel.getContato() == null) {
                 statement.setNull(3, Types.INTEGER);
             } else {
@@ -85,8 +85,8 @@ public class TelefoneDaoImpl implements TelefoneDao {
             statement.setInt(1, id);
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                Integer ddd = rs.getInt("ddd");
-                Integer numero = rs.getInt("numero");
+                String ddd = rs.getString("ddd");
+                String numero = rs.getString("numero");
                 Integer idContato = rs.getInt("id_contato");
                 Telefone tel = new Telefone();
                 tel.setDdd(ddd);
@@ -114,8 +114,8 @@ public class TelefoneDaoImpl implements TelefoneDao {
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
                 Telefone tel = new Telefone();
-                tel.setDdd(rs.getInt("ddd"));
-                tel.setNumero(rs.getInt("numero"));
+                tel.setDdd(rs.getString("ddd"));
+                tel.setNumero(rs.getString("numero"));
                 tel.setContato((Contato) contatoDao.pesquisar(rs.getInt("id_contato")));
                 tel.setId(rs.getInt("id"));
                 telefones.add(tel);
@@ -156,8 +156,8 @@ public class TelefoneDaoImpl implements TelefoneDao {
             statement.setInt(1, contato.getId());
             ResultSet rs = statement.executeQuery();
             while (rs.next()) {
-                Integer ddd = rs.getInt("ddd");
-                Integer numero = rs.getInt("numero");
+                String ddd = rs.getString("ddd");
+                String numero = rs.getString("numero");
                 Integer idContato = rs.getInt("id_Contato");
                 Telefone telefone = new Telefone();
                 telefone.setNumero(numero);

@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.view_backup;
+package br.com.view;
 
-import br.com.agendatelefonica_backup.PrincipalAgenda;
+import br.com.agendatelefonica.PrincipalAgenda;
 import br.com.entidade.Contato;
 import br.com.entidade.Telefone;
 import br.com.entidade.TipoContato;
-import br.com.negocio_backup.ManterContatoNegocio;
-import static br.com.view.FrameCadastroContato.TIPO_CONTATOS;
+import br.com.negocio.ManterContatoNegocio;
 import static br.com.view.FrameCadastroTipoContato.tipoContatoDao;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
@@ -299,8 +298,8 @@ public class FormularioContato extends javax.swing.JPanel {
         List<Telefone> listaTelefones = new ArrayList<>();
         Telefone t = new Telefone();
         t.setContato(CONTATO_ATUAL);
-        t.setDdd(Integer.valueOf(campoDdd.getText()));
-        t.setNumero(Integer.valueOf(campoTelefone.getText()));
+        t.setDdd(campoDdd.getText());
+        t.setNumero(campoTelefone.getText());
         ManterContatoNegocio.adicionarTelefoneNaLista(t);
         adicionarListaTelefonesTabela(listaTelefones);
 //        PrincipalAgenda.abrirTelaAdicao(c);

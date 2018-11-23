@@ -3,19 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.com.agendatelefonica_backup;
+package br.com.agendatelefonica;
 
 import br.com.entidade.Contato;
-import br.com.negocio_backup.ManterContatoNegocio;
 import br.com.view.FrameCadastroTipoContato;
-import br.com.view_backup.FormularioContato;
-import br.com.view_backup.FramePrincipal;
-import br.com.view_backup.ListarContato;
-import java.text.DecimalFormat;
-import java.util.List;
-import java.util.Random;
+import br.com.view.FormularioContato;
+import br.com.view.FramePrincipal;
+import br.com.view.ListarContato;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 
 /**
  *

@@ -7,8 +7,8 @@ package br.com.entidade;
 public class Telefone {
 
     private Integer id;
-    private Integer ddd;
-    private Integer numero;
+    private String ddd;
+    private String numero;
     private Contato contato;
 
     public Integer getId() {
@@ -19,19 +19,19 @@ public class Telefone {
         this.id = id;
     }
 
-    public Integer getDdd() {
+    public String getDdd() {
         return ddd;
     }
 
-    public void setDdd(Integer ddd) {
+    public void setDdd(String ddd) {
         this.ddd = ddd;
     }
 
-    public Integer getNumero() {
+    public String getNumero() {
         return numero;
     }
 
-    public void setNumero(Integer numero) {
+    public void setNumero(String numero) {
         this.numero = numero;
     }
 
