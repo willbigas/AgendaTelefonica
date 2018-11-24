@@ -5,8 +5,9 @@
  */
 package br.com.view;
 
-
 import br.com.agendatelefonica.PrincipalAgenda;
+import br.com.dao.ContatoDao;
+import br.com.daoImpl.ContatoDaoImpl;
 import br.com.entidade.Contato;
 import br.com.negocio.ManterContatoNegocio;
 import java.util.List;
@@ -22,11 +23,16 @@ public class ListarContato extends javax.swing.JPanel {
     /**
      * Creates new form ListarContato
      */
-    public ListarContato() {
+    public ListarContato(List<Contato> CONTATOS) throws Exception {
         initComponents();
 
-        List<Contato> contatos = ManterContatoNegocio.pesquisar("");
-        adicionarListaContatosTabela(contatos);
+        if (CONTATOS != null) {
+            adicionarListaContatosTabela(CONTATOS);
+        } else {
+            List<Contato> contatos = ManterContatoNegocio.pesquisar("");
+            adicionarListaContatosTabela(contatos);
+        }
+
     }
 
     /**
@@ -49,6 +55,7 @@ public class ListarContato extends javax.swing.JPanel {
         buttonEditar = new javax.swing.JButton();
         buttonNovo = new javax.swing.JButton();
         buttonExcluir = new javax.swing.JButton();
+        buttonSair = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -145,6 +152,20 @@ public class ListarContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(buttonExcluir, gridBagConstraints);
 
+        buttonSair.setText("Sair");
+        buttonSair.setMaximumSize(new java.awt.Dimension(58, 32));
+        buttonSair.setMinimumSize(new java.awt.Dimension(58, 32));
+        buttonSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonSairActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        jPanel1.add(buttonSair, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
@@ -153,41 +174,80 @@ public class ListarContato extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
-        List<Contato> contatos = ManterContatoNegocio.pesquisar(campoTextoBuscar.getText());
+
+        List<Contato> contatos = null;
+        try {
+            contatos = ManterContatoNegocio.pesquisar(campoTextoBuscar.getText());
+        } catch (Exception exception) {
+        }
         adicionarListaContatosTabela(contatos);
+
+        try {
+            PrincipalAgenda.JanelaPrincipalContatoPesquisado(contatos);
+        } catch (Exception exception) {
+        }
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
         int linha = tabelaContato.getSelectedRow();
         if (linha >= 0) {
             String idContato = (String) tabelaContato.getValueAt(linha, 0);
-            System.out.println("ID: " + idContato);
-            boolean apagou = ManterContatoNegocio.excluir(Integer.valueOf(idContato));
+            boolean apagou = false;
+            ContatoDao contatoDao = new ContatoDaoImpl();
+            try {
+
+                apagou = contatoDao.excluir(Integer.valueOf(idContato));
+                System.out.println(idContato);
+            } catch (Exception exception) {
+            }
+
             if (apagou) {
                 JOptionPane.showMessageDialog(this, "Contato excluído com sucesso!");
             } else {
-                JOptionPane.showMessageDialog(this, "Não foi possível excluir o contato!");
+                JOptionPane.showMessageDialog(this, "Não foi possível excluir o contato , Verifique suas Dependencias");
+            }
+
+            try {
+                PrincipalAgenda.JanelaPrincipalContato();
+            } catch (Exception exception) {
             }
             buttonBuscarActionPerformed(null); // pesquisa a partir do campo
         }
     }//GEN-LAST:event_buttonExcluirActionPerformed
 
     private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
-        PrincipalAgenda.abrirPanelContato();
+        PrincipalAgenda.JanelaCadastroContato();
     }//GEN-LAST:event_buttonNovoActionPerformed
 
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
+
+        ContatoDao contatoDao = new ContatoDaoImpl();
         int linha = tabelaContato.getSelectedRow();
         if (linha >= 0) {
             String idContato = (String) tabelaContato.getValueAt(linha, 0);
             Integer id = Integer.valueOf(idContato);
-            Contato c = ManterContatoNegocio.obterId(id);
+            Contato c = null;
+            try {
+                c = (Contato) contatoDao.pesquisar(id);
+            } catch (Exception exception) {
+            }
             if (c != null) {
-                PrincipalAgenda.abrirTelaAdicao(c);
+                PrincipalAgenda.JanelaCadastroContatoEdicao(c);
             }
 
         }
     }//GEN-LAST:event_buttonEditarActionPerformed
+
+    private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
+        // TODO add your handling code here:
+
+        try {
+            PrincipalAgenda.JanelaPrincipal();
+            this.setVisible(false);
+
+        } catch (Exception exception) {
+        }
+    }//GEN-LAST:event_buttonSairActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -195,6 +255,7 @@ public class ListarContato extends javax.swing.JPanel {
     private javax.swing.JButton buttonEditar;
     private javax.swing.JButton buttonExcluir;
     private javax.swing.JButton buttonNovo;
+    private javax.swing.JButton buttonSair;
     private javax.swing.JTextField campoTextoBuscar;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
@@ -216,9 +277,5 @@ public class ListarContato extends javax.swing.JPanel {
         DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
         tabelaContato.setModel(modelo);
     }
-    
-    
-    
-    
 
 }

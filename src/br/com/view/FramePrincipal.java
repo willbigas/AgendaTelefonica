@@ -1,12 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.view;
 
 import br.com.agendatelefonica.PrincipalAgenda;
-
 
 /**
  *
@@ -86,12 +80,16 @@ public class FramePrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuCadastroActionPerformed
 
     private void menuItemContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemContatoActionPerformed
-        PrincipalAgenda.listarContatos();
+        
+        try {
+            PrincipalAgenda.JanelaPrincipalContato();
+        } catch (Exception exception) {
+        }
     }//GEN-LAST:event_menuItemContatoActionPerformed
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        PrincipalAgenda.frameCadastroTipoContato();
+        PrincipalAgenda.JanelaCadastroTipoContato();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

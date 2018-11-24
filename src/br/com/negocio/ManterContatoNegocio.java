@@ -5,6 +5,8 @@
  */
 package br.com.negocio;
 
+import br.com.dao.ContatoDao;
+import br.com.daoImpl.ContatoDaoImpl;
 import br.com.entidade.Contato;
 import br.com.entidade.Telefone;
 import java.util.ArrayList;
@@ -15,12 +17,11 @@ import java.util.List;
  * @author Felipe
  */
 public class ManterContatoNegocio {
-    
-    private static List<Contato> CONTATOS = new ArrayList();
+
     private static List<Telefone> TELEFONES = new ArrayList();
-    private static Integer PROXIMO_ID = 1;
-    
-    public static void adicionar(Contato contato) {
+    private static ContatoDao contatoDao = new ContatoDaoImpl();
+
+    public static void adicionar(Contato contato) throws Exception {
         if (contato.getId() != null) {
             Contato contatoEditar = obterId(contato.getId());
             contatoEditar.setNome(contato.getNome());
@@ -30,51 +31,58 @@ public class ManterContatoNegocio {
             contatoEditar.setTelefones(contato.getTelefones());
             return;
         }
-        contato.setId(PROXIMO_ID);
-        CONTATOS.add(contato);
-        PROXIMO_ID++;
     }
-    
-    public static List<Contato> pesquisar(String termo) {
+
+    public static List<Contato> pesquisar(String termo) throws Exception {
         List<Contato> retorno = new ArrayList();
+        List<?> objs = contatoDao.pesquisarTodos();
+        List<Contato> CONTATOS = (List<Contato>) (Object) objs;
+
         for (Contato contato : CONTATOS) {
-            if (contato.getNome().toLowerCase().contains(termo.toLowerCase()) || contato.getEmail().toLowerCase().contains(termo.toLowerCase())
-                    || contato.getNascimento().equals(termo.toLowerCase())) {
+            if (contato.getNome().toLowerCase().contains(termo.toLowerCase()) || contato.getEmail().toLowerCase().contains(termo.toLowerCase())) {
                 retorno.add(contato);
             }
-            
+
         }
         return retorno;
     }
-    
-    public static boolean excluir(Integer id) {
+
+    public static boolean excluir(Integer id) throws Exception {
+
+        List<?> objs = contatoDao.pesquisarTodos();
+        List<Contato> CONTATOS = (List<Contato>) (Object) objs;
         for (int i = 0; i < CONTATOS.size(); i++) {
             Contato contato = CONTATOS.get(i);
             if (contato.getId().equals(id)) {
                 CONTATOS.remove(contato);
+                contatoDao.excluir(id);
                 return true;
             }
         }
         return false;
     }
-    
-    public static Contato obterId(Integer id) {
+
+    public static Contato obterId(Integer id) throws Exception {
+
+        List<?> objs = contatoDao.pesquisarTodos();
+        List<Contato> CONTATOS = (List<Contato>) (Object) objs;
         for (int i = 0; i < CONTATOS.size(); i++) {
             Contato contato = CONTATOS.get(i);
             if (contato.getId().equals(id)) {
-                CONTATOS.remove(contato);
-                return contato;
+                Contato ContatoPesquisado = (Contato) contatoDao.pesquisar(id);
+                contatoDao.excluir(id);
+                return ContatoPesquisado;
             }
         }
         return null;
     }
-    
+
     public static void adicionarTelefoneNaLista(Telefone tel) {
         if (tel != null) {
             TELEFONES.add(tel);
         }
     }
-    
+
     public static List<Telefone> pesquisarTelefones(String termo) {
         List<Telefone> retorno = new ArrayList();
         for (Telefone telefone : TELEFONES) {
@@ -82,9 +90,9 @@ public class ManterContatoNegocio {
                     || telefone.getContato().getNome().toLowerCase().contains(termo.toLowerCase())) {
                 retorno.add(telefone);
             }
-            
+
         }
         return retorno;
     }
-    
+
 }

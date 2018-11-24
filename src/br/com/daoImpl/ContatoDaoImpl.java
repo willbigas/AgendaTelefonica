@@ -68,6 +68,7 @@ public class ContatoDaoImpl implements ContatoDao {
                 statement.setInt(4, cont.getTipoContato().getId());
             }
             statement.setInt(4, cont.getId());
+            gravarTelefones(cont);
             int linhasAtualizadas = statement.executeUpdate();
             return linhasAtualizadas > 0;
         } catch (Exception e) {
@@ -263,8 +264,7 @@ public class ContatoDaoImpl implements ContatoDao {
         }
         return false;
     }
-    
-    
+
     @Override
     public List<Object> pesquisarTodosPorTipo(Integer idTipo) throws Exception {
         List<Object> contatos = new ArrayList<>();
@@ -293,8 +293,7 @@ public class ContatoDaoImpl implements ContatoDao {
         return contatos;
 
     }
-    
-    
+
     @Override
     public List<Object> pesquisarTodosPorTipoOrdenadoPorNome(Integer idTipo) throws Exception {
         List<Object> contatos = new ArrayList<>();
