@@ -62,12 +62,13 @@ public class ContatoDaoImpl implements ContatoDao {
             statement.setString(1, cont.getNome());
             statement.setDate(2, new Date(cont.getNascimento().getTime()));
             statement.setString(3, cont.getEmail());
-            if (cont.getTipoContato() == null) {
+            if (cont.getTipoContato().getId() == null) {
                 statement.setNull(4, Types.INTEGER);
             } else {
                 statement.setInt(4, cont.getTipoContato().getId());
             }
             statement.setInt(4, cont.getId());
+            telefoneDao.excluirTelefoneContatos(cont.getId());
             gravarTelefones(cont);
             int linhasAtualizadas = statement.executeUpdate();
             return linhasAtualizadas > 0;

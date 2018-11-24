@@ -25,14 +25,14 @@ public class ListarContato extends javax.swing.JPanel {
      */
     public ListarContato(List<Contato> CONTATOS) throws Exception {
         initComponents();
-
+        
         if (CONTATOS != null) {
             adicionarListaContatosTabela(CONTATOS);
         } else {
             List<Contato> contatos = ManterContatoNegocio.pesquisar("");
             adicionarListaContatosTabela(contatos);
         }
-
+        
     }
 
     /**
@@ -174,7 +174,7 @@ public class ListarContato extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
-
+        
         List<Contato> contatos = null;
         try {
             contatos = ManterContatoNegocio.pesquisar(campoTextoBuscar.getText());
@@ -191,23 +191,18 @@ public class ListarContato extends javax.swing.JPanel {
             boolean apagou = false;
             ContatoDao contatoDao = new ContatoDaoImpl();
             try {
-
+                
                 apagou = contatoDao.excluir(Integer.valueOf(idContato));
                 System.out.println(idContato);
             } catch (Exception exception) {
             }
-
+            
             if (apagou) {
                 JOptionPane.showMessageDialog(this, "Contato excluído com sucesso!");
             } else {
                 JOptionPane.showMessageDialog(this, "Não foi possível excluir o contato , Verifique suas Dependencias");
+                
             }
-
-            try {
-                PrincipalAgenda.JanelaPrincipalContato();
-            } catch (Exception exception) {
-            }
-            buttonBuscarActionPerformed(null); // pesquisa a partir do campo
         }
     }//GEN-LAST:event_buttonExcluirActionPerformed
 
@@ -216,7 +211,7 @@ public class ListarContato extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonNovoActionPerformed
 
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
-
+        
         ContatoDao contatoDao = new ContatoDaoImpl();
         int linha = tabelaContato.getSelectedRow();
         if (linha >= 0) {
@@ -230,19 +225,13 @@ public class ListarContato extends javax.swing.JPanel {
             if (c != null) {
                 PrincipalAgenda.JanelaCadastroContatoEdicao(c);
             }
-
+            
         }
     }//GEN-LAST:event_buttonEditarActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
         // TODO add your handling code here:
-
-        try {
-            PrincipalAgenda.JanelaPrincipal();
-            this.setVisible(false);
-
-        } catch (Exception exception) {
-        }
+        System.exit(0);
     }//GEN-LAST:event_buttonSairActionPerformed
 
 
@@ -273,5 +262,5 @@ public class ListarContato extends javax.swing.JPanel {
         DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
         tabelaContato.setModel(modelo);
     }
-
+    
 }
