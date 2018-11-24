@@ -3,7 +3,9 @@ package br.com.agendatelefonica;
 import br.com.entidade.Contato;
 import br.com.view.FrameCadastroTipoContato;
 import br.com.view.FrameCadastroContato;
+import br.com.view.FrameExcluirTipoContato;
 import br.com.view.FramePrincipal;
+import br.com.view.FrameTipoContato;
 import br.com.view.ListarContato;
 import java.util.List;
 import javax.swing.JFrame;
@@ -62,5 +64,25 @@ public class PrincipalAgenda {
         frameCadastroTipoContato.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frameCadastroTipoContato.setVisible(true);
     }
+    
+    
+    public static void JanelaExcluirTipoContato() {
+        FrameExcluirTipoContato frameCadastroTipoContato = new FrameExcluirTipoContato();
+        frameCadastroTipoContato.setTitle("EXCLUIR TIPO DE CONTATO");
+        frameCadastroTipoContato.setExtendedState(JFrame.NORMAL);
+        frameCadastroTipoContato.setLocationRelativeTo(null);
+        frameCadastroTipoContato.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frameCadastroTipoContato.setVisible(true);
+    }
+    
+     public static void JanelaPrincipalTipoContato() {
+         FrameTipoContato frameCadastroTipoContato = new FrameTipoContato();
+        frameCadastroTipoContato.setTitle("TIPO DE CONTATO");
+        frameCadastroTipoContato.setSize(250, 250);
+        frameCadastroTipoContato.setLocationRelativeTo(null);
+        frameCadastroTipoContato.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frameCadastroTipoContato.setVisible(true);
+    }
+
 
 }
