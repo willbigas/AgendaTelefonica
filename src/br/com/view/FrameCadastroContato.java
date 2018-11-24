@@ -92,7 +92,7 @@ public class FrameCadastroContato extends javax.swing.JPanel {
         campoDdd2 = new javax.swing.JTextField();
         textoDdd1 = new javax.swing.JLabel();
         textoTipoContato = new javax.swing.JLabel();
-        comboTipoContato = new javax.swing.JComboBox<>();
+        comboTipoContato = new javax.swing.JComboBox();
         buttonSair = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
@@ -263,7 +263,7 @@ public class FrameCadastroContato extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         add(textoTipoContato, gridBagConstraints);
 
-        comboTipoContato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Tipo" }));
+        comboTipoContato.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Tipo" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -302,8 +302,19 @@ public class FrameCadastroContato extends javax.swing.JPanel {
                  * Pegando Tipo de Contato da Combo box
                  */
                 TipoContato tipoContato = new TipoContato();
-                tipoContato.setId(comboTipoContato.getSelectedIndex());
-                c.setTipoContato(tipoContato);
+
+                TipoContato tipoContatoCombo = (TipoContato) comboTipoContato.getSelectedItem();
+                List<?> OBJECTS = tipoContatoDao.pesquisarTodos();
+                List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) OBJECTS;
+                c.setTipoContato(null);
+                for (int i = 0; i < TIPOCONTATO.size(); i++) {
+                    TipoContato get = TIPOCONTATO.get(i);
+                    if (get.getNome().equals(tipoContatoCombo.getNome())) {
+                        tipoContato.setId(get.getId());
+                        tipoContato.setNome(get.getNome());
+                        c.setTipoContato(tipoContato);
+                    } 
+                }
 
                 /**
                  * Pegando atributos de contato
@@ -331,13 +342,13 @@ public class FrameCadastroContato extends javax.swing.JPanel {
                 TELEFONES.add(telefone1);
                 TELEFONES.add(telefone2);
                 c.setTelefones(TELEFONES);
-               Contato objPesquisado = (Contato) contatoDao.pesquisar(c.getId());
-               
-                if (objPesquisado !=null) {
+                Contato objPesquisado = (Contato) contatoDao.pesquisar(c.getId());
+
+                if (objPesquisado != null) {
                     contatoDao.update(c);
                     JOptionPane.showMessageDialog(this, "Contato atualizado!");
-                        resetandoCampos();
-                        PrincipalAgenda.JanelaPrincipalContato();
+                    resetandoCampos();
+                    PrincipalAgenda.JanelaPrincipalContato();
                 } else {
                     boolean inserido = contatoDao.inserir(c);
                     if (inserido) {
@@ -394,7 +405,7 @@ public class FrameCadastroContato extends javax.swing.JPanel {
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoTelefone1;
     private javax.swing.JTextField campoTelefone2;
-    private javax.swing.JComboBox<String> comboTipoContato;
+    private javax.swing.JComboBox comboTipoContato;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel textoDdd1;

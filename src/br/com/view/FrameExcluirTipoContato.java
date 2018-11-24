@@ -27,7 +27,7 @@ public class FrameExcluirTipoContato extends javax.swing.JFrame {
     public FrameExcluirTipoContato() {
         initComponents();
         pegandoTipoContato();
-
+        
     }
 
     /**
@@ -42,7 +42,7 @@ public class FrameExcluirTipoContato extends javax.swing.JFrame {
 
         stringTipoContato = new javax.swing.JLabel();
         botaoExcluir = new javax.swing.JButton();
-        comboTipoContato = new javax.swing.JComboBox<>();
+        comboTipoContato = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -68,7 +68,7 @@ public class FrameExcluirTipoContato extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 3, 6, 3);
         getContentPane().add(botaoExcluir, gridBagConstraints);
 
-        comboTipoContato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Tipo" }));
+        comboTipoContato.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione o Tipo" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -80,20 +80,14 @@ public class FrameExcluirTipoContato extends javax.swing.JFrame {
     private void botaoExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoExcluirActionPerformed
         try {
             Boolean tudoOk = false;
-            List<TipoContato> TIPO_CONTATOS = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
-            String nome = comboTipoContato.getSelectedItem().toString();
-
-            List<?> objects = tipoContatoDao.pesquisarTodos();
-            List<TipoContato> TIPO_CONTATO = (List<TipoContato>) (Object) objects;
-            for (int i = 0; i < TIPO_CONTATO.size(); i++) {
-                TIPO_CONTATO.get(i);
-                if (TIPO_CONTATO.get(i).getNome().equals(nome)) {
-                    tudoOk = tipoContatoDao.excluir(TIPO_CONTATO.get(i).getId());
-                }
-            }
+            Object obj  = comboTipoContato.getSelectedItem();
+            String nome = (String) obj;
+            TipoContato TIPOCONTATO = tipoContatoDao.pesquisarPorNome(nome);
+            tudoOk = tipoContatoDao.excluir(TIPOCONTATO.getId());
             if (tudoOk) {
                 JOptionPane.showMessageDialog(this, "Tipo de Contato Excluido");
             } else {
+                System.out.println(TIPOCONTATO.getId().toString());
                 JOptionPane.showMessageDialog(this, "Existem contatos vinculados a esse tipo de Contato , favor Excluir os Vinculos");
             }
         } catch (Exception exception) {
@@ -109,7 +103,7 @@ public class FrameExcluirTipoContato extends javax.swing.JFrame {
             List<?> list = tipoContatoDao.pesquisarTodos();
             TIPO_CONTATO = (List<TipoContato>) (Object) list;
             for (TipoContato tipoContato : TIPO_CONTATO) {
-                comboTipoContato.addItem(tipoContato.getNome());
+                comboTipoContato.addItem(tipoContato);
             }
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(this, "Problemas no Banco" + exception.getStackTrace());
@@ -151,16 +145,14 @@ public class FrameExcluirTipoContato extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new FrameExcluirTipoContato().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new FrameExcluirTipoContato().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoExcluir;
-    private javax.swing.JComboBox<String> comboTipoContato;
+    private javax.swing.JComboBox comboTipoContato;
     private javax.swing.JLabel stringTipoContato;
     // End of variables declaration//GEN-END:variables
 }

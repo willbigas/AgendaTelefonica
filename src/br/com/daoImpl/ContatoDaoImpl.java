@@ -230,7 +230,7 @@ public class ContatoDaoImpl implements ContatoDao {
             conexao = SessionFactory.getConnection();
             PreparedStatement statement = conexao.prepareStatement(
                     "update contato set id_tipoContato = ? where id = ? ");
-            if (cont.getTipoContato() == null) {
+            if (cont.getTipoContato().getId() == null) {
                 statement.setNull(1, Types.INTEGER);
             } else {
                 statement.setInt(1, cont.getTipoContato().getId());

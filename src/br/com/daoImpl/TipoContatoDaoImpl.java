@@ -123,4 +123,29 @@ public class TipoContatoDaoImpl implements TipoContatoDao {
         }
     }
 
+    @Override
+    public TipoContato pesquisarPorNome(String nome) throws Exception {
+
+        try {
+            conexao = SessionFactory.getConnection();
+            PreparedStatement statement = conexao.prepareStatement(
+                    "select * from tipoContato where nome = ?");
+            statement.setString(1, nome);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Integer id = rs.getInt("id");
+                TipoContato tc = new TipoContato();
+                tc.setNome(nome);
+                tc.setId(id);
+                return tc;
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conexao.close();
+        }
+        return null;
+    }
+
 }

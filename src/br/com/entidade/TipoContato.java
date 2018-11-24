@@ -27,7 +27,7 @@ public class TipoContato {
 
     @Override
     public String toString() {
-        return "TipoContato{" + "id=" + id + ", nome=" + nome + '}';
+        return nome;
     }
     
     
