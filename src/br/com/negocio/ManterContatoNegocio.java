@@ -39,7 +39,8 @@ public class ManterContatoNegocio {
         List<Contato> CONTATOS = (List<Contato>) (Object) objs;
 
         for (Contato contato : CONTATOS) {
-            if (contato.getNome().toLowerCase().contains(termo.toLowerCase()) || contato.getEmail().toLowerCase().contains(termo.toLowerCase())) {
+            if (contato.getNome().toLowerCase().contains(termo.toLowerCase()) || contato.getEmail().toLowerCase().contains(termo.toLowerCase()) || 
+                    contato.getTipoContato().getNome().toLowerCase().contains(termo.toLowerCase()) ) {
                 retorno.add(contato);
             }
 

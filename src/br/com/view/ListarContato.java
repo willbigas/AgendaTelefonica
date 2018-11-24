@@ -182,10 +182,6 @@ public class ListarContato extends javax.swing.JPanel {
         }
         adicionarListaContatosTabela(contatos);
 
-        try {
-            PrincipalAgenda.JanelaPrincipalContatoPesquisado(contatos);
-        } catch (Exception exception) {
-        }
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
