@@ -70,15 +70,16 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
 
         tabelaTipoTelefone.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "TIPO DE TELEFONE"
             }
         ));
+        tabelaTipoTelefone.setPreferredSize(new java.awt.Dimension(250, 64));
         jScrollPane1.setViewportView(tabelaTipoTelefone);
 
         javax.swing.GroupLayout painelTabelaLayout = new javax.swing.GroupLayout(painelTabela);
@@ -169,35 +170,44 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
             seForNormal();
         }
         if (checkboxTipo.isSelected()) {
-            try {
-                String mensagem = null;
-                Integer id = null;
-                List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
-                for (int i = 0; i < TIPOCONTATO.size(); i++) {
-                    TipoContato get = TIPOCONTATO.get(i);
-                    mensagem = mensagem + JOptionPane.showInputDialog("Digite o id do TipoContato");
-                    id = Integer.valueOf(mensagem);
-                }
-                seForNormalComFiltroDeTipo(id);
-            } catch (Exception exception) {
-            }
 
+            int linha = tabelaTipoTelefone.getSelectedRow();
+            if (linha >= 0) {
+                String campoSelecionado = (String) tabelaTipoTelefone.getValueAt(linha, 0);
+                Integer campoIdTipoContatoSelecionado = Integer.valueOf(campoSelecionado);
+
+                try {
+
+                    String mensagem = null;
+                    List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
+                    for (int i = 0; i < TIPOCONTATO.size(); i++) {
+                        TipoContato get = TIPOCONTATO.get(i);
+                    }
+                    seForNormalComFiltroDeTipo(campoIdTipoContatoSelecionado);
+                } catch (Exception exception) {
+                }
+
+            }
         }
         if (checkboxTipoENome.isSelected()) {
 
-            try {
-                String mensagem = null;
-                Integer id = null;
-                List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
-                for (int i = 0; i < TIPOCONTATO.size(); i++) {
-                    TipoContato get = TIPOCONTATO.get(i);
-                    mensagem = mensagem + JOptionPane.showInputDialog("Digite o id de Tipo de Contato");
-                    id = Integer.valueOf(mensagem);
-                }
-                seForNormalComFiltroDeTipoOrdenadoPorNome(id);
-            } catch (Exception exception) {
-            }
+            int linhaTipo = tabelaTipoTelefone.getSelectedRow();
+            if (linhaTipo >= 0) {
+                String campoSelecionadoTipo = (String) tabelaTipoTelefone.getValueAt(linhaTipo, 0);
+                Integer campoIdTipoContatoSelecionado = Integer.valueOf(campoSelecionadoTipo);
 
+                try {
+                    String mensagem = null;
+                    Integer id = null;
+                    List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
+                    for (int i = 0; i < TIPOCONTATO.size(); i++) {
+                        TipoContato get = TIPOCONTATO.get(i);
+                    }
+                    seForNormalComFiltroDeTipoOrdenadoPorNome(campoIdTipoContatoSelecionado);
+                } catch (Exception exception) {
+                }
+
+            }
         }
 
 
@@ -210,7 +220,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "Arquivo Csv - Excel 2007 ou Inferior", "csv");
         chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(this);
+        int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             String nomeArquivo = chooser.getSelectedFile().getName();
             String enderecoArquivo = chooser.getSelectedFile().getPath();
@@ -232,7 +242,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "Arquivo Csv - Excel 2007 ou Inferior", "csv");
         chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(this);
+        int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             String nomeArquivo = chooser.getSelectedFile().getName();
             String enderecoArquivo = chooser.getSelectedFile().getPath();
@@ -254,7 +264,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
                 "Arquivo Csv - Excel 2007 ou Inferior", "csv");
         chooser.setFileFilter(filter);
-        int returnVal = chooser.showOpenDialog(this);
+        int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             String nomeArquivo = chooser.getSelectedFile().getName();
             String enderecoArquivo = chooser.getSelectedFile().getPath();
