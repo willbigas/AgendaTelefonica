@@ -7,6 +7,7 @@ import br.com.view.JanelaTipoContatoExcluir;
 import br.com.view.JanelaPrincipal;
 import br.com.view.JanelaTipoContato;
 import br.com.view.JanelaContato;
+import br.com.view.JanelaExportarContatos;
 import java.util.List;
 import javax.swing.JFrame;
 
@@ -82,6 +83,16 @@ public class PrincipalAgenda {
         frameCadastroTipoContato.setLocationRelativeTo(null);
         frameCadastroTipoContato.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frameCadastroTipoContato.setVisible(true);
+    }
+     
+     
+     public static void JanelaExportarContatos() {
+         JanelaExportarContatos frameCadastroExportarContatos = new JanelaExportarContatos();
+        frameCadastroExportarContatos.setTitle("EXPORTAR CONTATO");
+        frameCadastroExportarContatos.setSize(750,350);
+        frameCadastroExportarContatos.setLocationRelativeTo(null);
+        frameCadastroExportarContatos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        frameCadastroExportarContatos.setVisible(true);
     }
 
 

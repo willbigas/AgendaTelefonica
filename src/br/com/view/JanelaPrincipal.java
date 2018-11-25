@@ -28,7 +28,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         menuCadastro = new javax.swing.JMenu();
         menuItemContato = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
-        menuEditar = new javax.swing.JMenu();
+        menuExportar = new javax.swing.JMenu();
+        menuExportarContatos = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,8 +58,22 @@ public class JanelaPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuCadastro);
 
-        menuEditar.setText("Edit");
-        jMenuBar1.add(menuEditar);
+        menuExportar.setText("Exportar");
+        menuExportar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuExportarActionPerformed(evt);
+            }
+        });
+
+        menuExportarContatos.setText("Contatos");
+        menuExportarContatos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuExportarContatosActionPerformed(evt);
+            }
+        });
+        menuExportar.add(menuExportarContatos);
+
+        jMenuBar1.add(menuExportar);
 
         setJMenuBar(jMenuBar1);
 
@@ -91,6 +106,16 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         // TODO add your handling code here:
         PrincipalAgenda.JanelaPrincipalTipoContato();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void menuExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExportarActionPerformed
+        // TODO add your handling code here:
+       
+    }//GEN-LAST:event_menuExportarActionPerformed
+
+    private void menuExportarContatosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuExportarContatosActionPerformed
+        // TODO add your handling code here:
+       PrincipalAgenda.JanelaExportarContatos();
+    }//GEN-LAST:event_menuExportarContatosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -134,7 +159,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuCadastro;
-    private javax.swing.JMenu menuEditar;
+    private javax.swing.JMenu menuExportar;
+    private javax.swing.JMenuItem menuExportarContatos;
     private javax.swing.JMenuItem menuItemContato;
     // End of variables declaration//GEN-END:variables
 }
