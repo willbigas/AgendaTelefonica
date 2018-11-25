@@ -2,7 +2,7 @@ package br.com.entidade;
 
 /**
  *
- * @author Alunos
+ * @author William
  */
 public class TipoContato {
 

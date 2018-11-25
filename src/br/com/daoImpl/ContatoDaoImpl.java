@@ -18,7 +18,7 @@ import java.util.List;
 
 /**
  *
- * @author Alunos
+ * @author William
  */
 public class ContatoDaoImpl implements ContatoDao {
 

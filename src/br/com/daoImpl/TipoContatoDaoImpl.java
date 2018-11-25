@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author Alunos
+ * @author William
  */
 public class TipoContatoDaoImpl implements TipoContatoDao {
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  *
- * @author Alunos
+ * @author William
  */
 public interface TelefoneDao extends BaseDao {
 

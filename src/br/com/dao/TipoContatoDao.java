@@ -4,7 +4,7 @@ import br.com.entidade.TipoContato;
 
 /**
  *
- * @author Alunos
+ * @author William
  */
 public interface TipoContatoDao extends BaseDao {
     

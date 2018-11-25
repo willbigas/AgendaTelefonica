@@ -4,7 +4,7 @@ import br.com.agendatelefonica.PrincipalAgenda;
 
 /**
  *
- * @author Felipe
+ * @author William
  */
 public class JanelaPrincipal extends javax.swing.JFrame {
 

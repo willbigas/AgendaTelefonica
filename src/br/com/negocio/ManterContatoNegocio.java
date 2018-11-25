@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.negocio;
 
 import br.com.dao.ContatoDao;
@@ -14,7 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author Felipe
+ * @author William
  */
 public class ManterContatoNegocio {
 
@@ -39,7 +34,8 @@ public class ManterContatoNegocio {
         List<Contato> CONTATOS = (List<Contato>) (Object) objs;
 
         for (Contato contato : CONTATOS) {
-            if (contato.getNome().toLowerCase().contains(termo.toLowerCase()) || contato.getEmail().toLowerCase().contains(termo.toLowerCase()) || 
+            if (contato.getNome().toLowerCase().contains(termo.toLowerCase()) 
+                    || contato.getEmail().toLowerCase().contains(termo.toLowerCase()) || 
                     contato.getTipoContato().getNome().toLowerCase().contains(termo.toLowerCase()) ) {
                 retorno.add(contato);
             }

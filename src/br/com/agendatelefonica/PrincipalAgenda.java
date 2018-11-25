@@ -12,7 +12,7 @@ import javax.swing.JFrame;
 
 /**
  *
- * @author Felipe
+ * @author William
  */
 public class PrincipalAgenda {
 

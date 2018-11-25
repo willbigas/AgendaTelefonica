@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  *
- * @author Alunos
+ * @author William
  */
 public interface ContatoDao extends BaseDao {
 

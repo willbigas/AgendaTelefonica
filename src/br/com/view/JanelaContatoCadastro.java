@@ -32,7 +32,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         CONTATO_ATUAL = c;
         if (c != null) {
             try {
-
+                comboTipoContato.setSelectedItem(c.getTipoContato().getNome());
                 campoNome.setText(c.getNome());
                 campoNascimento.setText(br.com.utilpacket.Util_Format.data(c.getNascimento()));
                 campoEmail.setText(c.getEmail());
