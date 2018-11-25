@@ -2,12 +2,13 @@ package br.com.view;
 
 import br.com.agendatelefonica.PrincipalAgenda;
 import br.com.dao.ContatoDao;
+import br.com.dao.TipoContatoDao;
 import br.com.daoImpl.ContatoDaoImpl;
+import br.com.daoImpl.TipoContatoDaoImpl;
 import br.com.entidade.Contato;
 import br.com.entidade.Telefone;
 import br.com.entidade.TipoContato;
 import br.com.negocio.ManterContatoNegocio;
-import static br.com.view.JanelaTipoContatoCadastro.tipoContatoDao;
 import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
     private Integer IDALTERACAO = null;
     private static Contato CONTATO_ATUAL = new Contato();
     private static ContatoDao contatoDao = new ContatoDaoImpl();
+    private static TipoContatoDao tipoContatoDao = new TipoContatoDaoImpl();
 
     /**
      * Creates new form FormularioContato
@@ -294,7 +296,10 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         if (campoNome.getText().isEmpty() || campoNascimento.getText().isEmpty()
                 || campoEmail.getText().isEmpty()
                 || campoDdd1.getText().isEmpty()
-                || campoTelefone1.getText().isEmpty()) {
+                || campoTelefone1.getText().isEmpty()
+                || campoDdd2.getText().isEmpty()
+                || campoTelefone2.getText().isEmpty()
+                || comboTipoContato.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
         } else {
             try {

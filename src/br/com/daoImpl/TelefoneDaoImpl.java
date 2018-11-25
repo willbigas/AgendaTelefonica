@@ -36,6 +36,7 @@ public class TelefoneDaoImpl implements TelefoneDao {
             } else {
                 statement.setInt(3, tel.getContato().getId());
             }
+            
             statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
             if (rs.next()) {

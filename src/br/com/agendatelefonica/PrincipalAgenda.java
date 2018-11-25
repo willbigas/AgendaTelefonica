@@ -1,9 +1,7 @@
 package br.com.agendatelefonica;
 
 import br.com.entidade.Contato;
-import br.com.view.JanelaTipoContatoCadastro;
 import br.com.view.JanelaContatoCadastro;
-import br.com.view.JanelaTipoContatoExcluir;
 import br.com.view.JanelaPrincipal;
 import br.com.view.JanelaTipoContato;
 import br.com.view.JanelaContato;
@@ -21,7 +19,7 @@ public class PrincipalAgenda {
 
     public static void main(String[] args) {
         JanelaPrincipal();
-        
+
     }
 
     public static void JanelaPrincipal() {
@@ -37,7 +35,7 @@ public class PrincipalAgenda {
         frame.setContentPane(panel);
         frame.setVisible(true);
     }
-    
+
     public static void JanelaPrincipalContatoPesquisado(List<Contato> cts) throws Exception {
         JanelaContato panel = new JanelaContato(cts);
         frame.setContentPane(panel);
@@ -57,43 +55,22 @@ public class PrincipalAgenda {
         frame.setVisible(true);
     }
 
-    public static void JanelaCadastroTipoContato() {
-        JanelaTipoContatoCadastro frameCadastroTipoContato = new JanelaTipoContatoCadastro();
-        frameCadastroTipoContato.setTitle("CADASTRAR TIPO DE CONTATO");
-        frameCadastroTipoContato.setExtendedState(JFrame.NORMAL);
-        frameCadastroTipoContato.setLocationRelativeTo(null);
-        frameCadastroTipoContato.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frameCadastroTipoContato.setVisible(true);
-    }
-    
-    
-    public static void JanelaExcluirTipoContato() {
-        JanelaTipoContatoExcluir frameCadastroTipoContato = new JanelaTipoContatoExcluir();
-        frameCadastroTipoContato.setTitle("EXCLUIR TIPO DE CONTATO");
-        frameCadastroTipoContato.setExtendedState(JFrame.NORMAL);
-        frameCadastroTipoContato.setLocationRelativeTo(null);
-        frameCadastroTipoContato.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        frameCadastroTipoContato.setVisible(true);
-    }
-    
-     public static void JanelaPrincipalTipoContato() {
-         JanelaTipoContato frameCadastroTipoContato = new JanelaTipoContato();
+    public static void JanelaPrincipalTipoContato() {
+        JanelaTipoContato frameCadastroTipoContato = new JanelaTipoContato();
         frameCadastroTipoContato.setTitle("TIPO DE CONTATO");
-        frameCadastroTipoContato.setSize(250, 250);
+        frameCadastroTipoContato.setSize(600, 600);
         frameCadastroTipoContato.setLocationRelativeTo(null);
         frameCadastroTipoContato.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frameCadastroTipoContato.setVisible(true);
     }
-     
-     
-     public static void JanelaExportarContatos() {
-         JanelaExportarContatos frameCadastroExportarContatos = new JanelaExportarContatos();
+
+    public static void JanelaExportarContatos() {
+        JanelaExportarContatos frameCadastroExportarContatos = new JanelaExportarContatos();
         frameCadastroExportarContatos.setTitle("EXPORTAR CONTATO");
-        frameCadastroExportarContatos.setSize(750,350);
+        frameCadastroExportarContatos.setSize(750, 350);
         frameCadastroExportarContatos.setLocationRelativeTo(null);
         frameCadastroExportarContatos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frameCadastroExportarContatos.setVisible(true);
     }
-
 
 }

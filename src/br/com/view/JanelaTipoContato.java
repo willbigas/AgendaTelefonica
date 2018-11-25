@@ -1,6 +1,12 @@
 package br.com.view;
 
 import br.com.agendatelefonica.PrincipalAgenda;
+import br.com.dao.TipoContatoDao;
+import br.com.daoImpl.TipoContatoDaoImpl;
+import br.com.entidade.TipoContato;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -8,11 +14,19 @@ import br.com.agendatelefonica.PrincipalAgenda;
  */
 public class JanelaTipoContato extends javax.swing.JFrame {
 
+    TipoContatoDao tipoContatoDao = new TipoContatoDaoImpl();
+
     /**
      * Creates new form FrameTipoContato
      */
     public JanelaTipoContato() {
         initComponents();
+        try {
+
+            List<TipoContato> tipoContatos = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
+            adicionarListaTipoContatosTabela(tipoContatos);
+        } catch (Exception exception) {
+        }
     }
 
     /**
@@ -27,6 +41,8 @@ public class JanelaTipoContato extends javax.swing.JFrame {
 
         bottonNovoTipo = new javax.swing.JButton();
         bottonExcluirTipo = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaTipoContato = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -39,6 +55,7 @@ public class JanelaTipoContato extends javax.swing.JFrame {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 6, 0);
         getContentPane().add(bottonNovoTipo, gridBagConstraints);
 
@@ -51,21 +68,86 @@ public class JanelaTipoContato extends javax.swing.JFrame {
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(6, 0, 6, 0);
         getContentPane().add(bottonExcluirTipo, gridBagConstraints);
+
+        tabelaTipoContato.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "ID", "TIPO DE CONTATO"
+            }
+        ));
+        tabelaTipoContato.setPreferredSize(null);
+        jScrollPane1.setViewportView(tabelaTipoContato);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        getContentPane().add(jScrollPane1, gridBagConstraints);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bottonNovoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonNovoTipoActionPerformed
         // TODO add your handling code here:
-        PrincipalAgenda.JanelaCadastroTipoContato();
+
+        TipoContato tipoContato = new TipoContato();
+        String mensagem = JOptionPane.showInputDialog("Digite o nome do Tipo de Contato");
+        tipoContato.setNome(mensagem);
+        try {
+
+            Boolean tudoOk = tipoContatoDao.inserir(tipoContato);
+            if (tudoOk) {
+                JOptionPane.showMessageDialog(this, "Tipo de Contato Inserido");
+
+            }
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(this, "Problemas ao Persistir");
+            PrincipalAgenda.JanelaPrincipalTipoContato();
+        }
+        try {
+
+            List<TipoContato> tipoContatos = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
+            adicionarListaTipoContatosTabela(tipoContatos);
+        } catch (Exception exception) {
+        }
+
+
     }//GEN-LAST:event_bottonNovoTipoActionPerformed
 
     private void bottonExcluirTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonExcluirTipoActionPerformed
         // TODO add your handling code here:
-        PrincipalAgenda.JanelaExcluirTipoContato();
+
+        int linha = tabelaTipoContato.getSelectedRow();
+        if (linha >= 0) {
+            String campoSelecionado = (String) tabelaTipoContato.getValueAt(linha, 0);
+            Integer campoIdTipoContatoSelecionado = Integer.valueOf(campoSelecionado);
+            try {
+
+                Boolean tudoCerto = tipoContatoDao.excluir(campoIdTipoContatoSelecionado);
+                if (tudoCerto) {
+                    JOptionPane.showMessageDialog(this, "Tipo de Contato Excluido");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Existem contatos vinculados a esse tipo de Contato , favor Excluir os Vinculos");
+                }
+            } catch (Exception exception) {
+                JOptionPane.showMessageDialog(this, "Problemas ao Excluir");
+            }
+        }
+
+        try {
+
+            List<TipoContato> tipoContatos = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
+            adicionarListaTipoContatosTabela(tipoContatos);
+        } catch (Exception exception) {
+        }
     }//GEN-LAST:event_bottonExcluirTipoActionPerformed
 
     /**
@@ -104,8 +186,22 @@ public class JanelaTipoContato extends javax.swing.JFrame {
         });
     }
 
+    public void adicionarListaTipoContatosTabela(List<TipoContato> tipoContatos) {
+        String[] colunas = {"Codigo", "TipoContato"};
+        String[][] dados = new String[tipoContatos.size()][colunas.length];
+        for (int i = 0; i < tipoContatos.size(); i++) {
+            TipoContato tc = tipoContatos.get(i);
+            dados[i][0] = tc.getId().toString();
+            dados[i][1] = tc.getNome();
+        }
+        DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
+        tabelaTipoContato.setModel(modelo);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bottonExcluirTipo;
     private javax.swing.JButton bottonNovoTipo;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelaTipoContato;
     // End of variables declaration//GEN-END:variables
 }

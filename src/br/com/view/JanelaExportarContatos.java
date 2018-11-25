@@ -79,7 +79,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
                 "ID", "TIPO DE TELEFONE"
             }
         ));
-        tabelaTipoTelefone.setPreferredSize(new java.awt.Dimension(250, 64));
+        tabelaTipoTelefone.setPreferredSize(null);
         jScrollPane1.setViewportView(tabelaTipoTelefone);
 
         javax.swing.GroupLayout painelTabelaLayout = new javax.swing.GroupLayout(painelTabela);

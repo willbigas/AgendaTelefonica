@@ -64,6 +64,7 @@ public class JanelaContato extends javax.swing.JPanel {
 
         jScrollPane1.setPreferredSize(new java.awt.Dimension(652, 382));
 
+        tabelaContato.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         tabelaContato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -72,10 +73,13 @@ public class JanelaContato extends javax.swing.JPanel {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Numero", "Contato", "Tipo de Contato", "E-mail"
             }
         ));
         jScrollPane1.setViewportView(tabelaContato);
+        if (tabelaContato.getColumnModel().getColumnCount() > 0) {
+            tabelaContato.getColumnModel().getColumn(0).setPreferredWidth(1);
+        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
