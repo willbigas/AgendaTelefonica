@@ -58,7 +58,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
         painelTabela = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaTipoTelefone = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
+        painelExportacao = new javax.swing.JPanel();
         checkBoxNormal = new javax.swing.JCheckBox();
         checkboxTipo = new javax.swing.JCheckBox();
         checkboxTipoENome = new javax.swing.JCheckBox();
@@ -101,35 +101,35 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
 
         getContentPane().add(painelTabela, new java.awt.GridBagConstraints());
 
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        painelExportacao.setLayout(new java.awt.GridBagLayout());
 
         checkBoxNormal.setText("Normal");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel1.add(checkBoxNormal, gridBagConstraints);
+        painelExportacao.add(checkBoxNormal, gridBagConstraints);
 
         checkboxTipo.setText("Filtrado por Tipo");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel1.add(checkboxTipo, gridBagConstraints);
+        painelExportacao.add(checkboxTipo, gridBagConstraints);
 
         checkboxTipoENome.setText("Filtrado por Tipo e Ordenado por nome");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        jPanel1.add(checkboxTipoENome, gridBagConstraints);
+        painelExportacao.add(checkboxTipoENome, gridBagConstraints);
 
         textoTipoExportacao.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         textoTipoExportacao.setText("Tipos de Exportação");
         textoTipoExportacao.setPreferredSize(new java.awt.Dimension(12040, 12040));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(11, 0, 11, 0);
-        jPanel1.add(textoTipoExportacao, gridBagConstraints);
+        painelExportacao.add(textoTipoExportacao, gridBagConstraints);
 
         bottonExportar.setText("Exportar");
         bottonExportar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,9 +142,9 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(4, 3, 4, 3);
-        jPanel1.add(bottonExportar, gridBagConstraints);
+        painelExportacao.add(bottonExportar, gridBagConstraints);
 
-        getContentPane().add(jPanel1, new java.awt.GridBagConstraints());
+        getContentPane().add(painelExportacao, new java.awt.GridBagConstraints());
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -368,8 +368,8 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
     private javax.swing.JCheckBox checkBoxNormal;
     private javax.swing.JCheckBox checkboxTipo;
     private javax.swing.JCheckBox checkboxTipoENome;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel painelExportacao;
     private javax.swing.JPanel painelTabela;
     private javax.swing.JTable tabelaTipoTelefone;
     private javax.swing.JLabel textoTipoExportacao;

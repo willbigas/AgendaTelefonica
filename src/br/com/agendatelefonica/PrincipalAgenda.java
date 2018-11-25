@@ -8,6 +8,7 @@ import br.com.view.JanelaContato;
 import br.com.view.JanelaExportarContatos;
 import java.util.List;
 import javax.swing.JFrame;
+import javax.swing.UIManager;
 
 /**
  *
@@ -17,7 +18,8 @@ public class PrincipalAgenda {
 
     private static JanelaPrincipal frame;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
+        UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         JanelaPrincipal();
 
     }
@@ -42,14 +44,14 @@ public class PrincipalAgenda {
         frame.setVisible(true);
     }
 
-    public static void JanelaCadastroContato() {
+    public static void JanelaCadastroContato() throws Exception{
         JanelaContatoCadastro form = new JanelaContatoCadastro(null);
         frame.setContentPane(form);
         frame.setVisible(true);
 
     }
 
-    public static void JanelaCadastroContatoEdicao(Contato c) {
+    public static void JanelaCadastroContatoEdicao(Contato c) throws Exception{
         JanelaContatoCadastro form = new JanelaContatoCadastro(c);
         frame.setContentPane(form);
         frame.setVisible(true);

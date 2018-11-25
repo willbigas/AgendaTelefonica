@@ -2,8 +2,10 @@ package br.com.view;
 
 import br.com.agendatelefonica.PrincipalAgenda;
 import br.com.dao.ContatoDao;
+import br.com.dao.TelefoneDao;
 import br.com.dao.TipoContatoDao;
 import br.com.daoImpl.ContatoDaoImpl;
+import br.com.daoImpl.TelefoneDaoImpl;
 import br.com.daoImpl.TipoContatoDaoImpl;
 import br.com.entidade.Contato;
 import br.com.entidade.Telefone;
@@ -13,23 +15,28 @@ import java.awt.HeadlessException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author William
  */
 public class JanelaContatoCadastro extends javax.swing.JPanel {
-    
+
     private Integer IDALTERACAO = null;
     private static Contato CONTATO_ATUAL = new Contato();
     private static ContatoDao contatoDao = new ContatoDaoImpl();
     private static TipoContatoDao tipoContatoDao = new TipoContatoDaoImpl();
+    private static TelefoneDao telefoneDao = new TelefoneDaoImpl();
+    private static List<Telefone> TELEFONES_DO_CONTATO = new ArrayList<>();
 
     /**
      * Creates new form FormularioContato
      */
-    public JanelaContatoCadastro(Contato c) {
+    public JanelaContatoCadastro(Contato c) throws Exception {
         initComponents();
+        adicionarListaTeleFonesTabela(telefoneDao.pesquisarTelefoneContatos(c));
+        TELEFONES_DO_CONTATO = telefoneDao.pesquisarTelefoneContatos(c);
         pegandoTipoContatoDoBanco();
         CONTATO_ATUAL = c;
         if (c != null) {
@@ -38,20 +45,15 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
                 campoNome.setText(c.getNome());
                 campoNascimento.setText(br.com.utilpacket.Util_Format.data(c.getNascimento()));
                 campoEmail.setText(c.getEmail());
-                campoDdd1.setText(c.getTelefones().get(0).getDdd());
-                campoDdd2.setText(c.getTelefones().get(1).getDdd());
-                campoTelefone1.setText(c.getTelefones().get(0).getNumero());
-                System.out.println(c.getTelefones().get(0).getNumero());
-                campoTelefone2.setText(c.getTelefones().get(1).getNumero());
                 IDALTERACAO = c.getId();
             } catch (Exception exception) {
             }
         }
-        
+
         List<Telefone> telefones = ManterContatoNegocio.pesquisarTelefones("");
-        
+
     }
-    
+
     private void pegandoTipoContatoDoBanco() throws HeadlessException {
         List<TipoContato> TIPO_CONTATO = new ArrayList<>();
         try {
@@ -85,22 +87,22 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         buttonGravarContato = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        textoTelefone2 = new javax.swing.JLabel();
-        campoTelefone2 = new javax.swing.JTextField();
-        textoDdd2 = new javax.swing.JLabel();
         campoDdd1 = new javax.swing.JTextField();
         campoTelefone1 = new javax.swing.JTextField();
         textoTelefone1 = new javax.swing.JLabel();
-        campoDdd2 = new javax.swing.JTextField();
         textoDdd1 = new javax.swing.JLabel();
+        buttonExcluirTelefone = new javax.swing.JButton();
+        buttonAdicionarTelefone = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tabelaTelefone = new javax.swing.JTable();
         textoTipoContato = new javax.swing.JLabel();
         comboTipoContato = new javax.swing.JComboBox<>();
         buttonSair = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
-        tituloContato.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        tituloContato.setText("CONTATO");
+        tituloContato.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        tituloContato.setText("CADASTRAR / EDITAR");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 4;
@@ -134,7 +136,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(4, 4, 4, 4);
         add(textoEmail, gridBagConstraints);
 
-        campoNome.setColumns(15);
+        campoNome.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
@@ -142,7 +144,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(6, 4, 6, 4);
         add(campoNome, gridBagConstraints);
 
-        campoNascimento.setColumns(15);
+        campoNascimento.setColumns(8);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;
@@ -150,7 +152,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(6, 4, 6, 4);
         add(campoNascimento, gridBagConstraints);
 
-        campoEmail.setColumns(15);
+        campoEmail.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 4;
@@ -178,30 +180,6 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Telefone"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
-        textoTelefone2.setText("TEL");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(2, 1, 2, 1);
-        jPanel2.add(textoTelefone2, gridBagConstraints);
-
-        campoTelefone2.setColumns(7);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(2, 1, 2, 1);
-        jPanel2.add(campoTelefone2, gridBagConstraints);
-
-        textoDdd2.setText("DDD");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(2, 1, 2, 1);
-        jPanel2.add(textoDdd2, gridBagConstraints);
-
         campoDdd1.setColumns(3);
         campoDdd1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,48 +187,82 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(2, 1, 2, 1);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(2, 34, 2, 1);
         jPanel2.add(campoDdd1, gridBagConstraints);
 
-        campoTelefone1.setColumns(7);
+        campoTelefone1.setColumns(10);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(2, 1, 2, 1);
+        gridBagConstraints.insets = new java.awt.Insets(2, 22, 2, 93);
         jPanel2.add(campoTelefone1, gridBagConstraints);
 
-        textoTelefone1.setText("TEL");
+        textoTelefone1.setText("TELEFONE");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(2, 1, 2, 1);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(2, 84, 2, 1);
         jPanel2.add(textoTelefone1, gridBagConstraints);
-
-        campoDdd2.setColumns(3);
-        campoDdd2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                campoDdd2ActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.ipady = 1;
-        gridBagConstraints.insets = new java.awt.Insets(2, 1, 2, 1);
-        jPanel2.add(campoDdd2, gridBagConstraints);
 
         textoDdd1.setText("DDD");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipady = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(2, 1, 2, 1);
         jPanel2.add(textoDdd1, gridBagConstraints);
+
+        buttonExcluirTelefone.setText("-");
+        buttonExcluirTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExcluirTelefoneActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 4);
+        jPanel2.add(buttonExcluirTelefone, gridBagConstraints);
+
+        buttonAdicionarTelefone.setText("+");
+        buttonAdicionarTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdicionarTelefoneActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(4, 37, 4, 37);
+        jPanel2.add(buttonAdicionarTelefone, gridBagConstraints);
+
+        tabelaTelefone.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "ddd", "Telefone"
+            }
+        ));
+        jScrollPane1.setViewportView(tabelaTelefone);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        jPanel2.add(jScrollPane1, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -274,7 +286,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         add(comboTipoContato, gridBagConstraints);
 
         buttonSair.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        buttonSair.setText("Sair");
+        buttonSair.setText("Voltar");
         buttonSair.setMaximumSize(new java.awt.Dimension(85, 36));
         buttonSair.setMinimumSize(new java.awt.Dimension(85, 36));
         buttonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -287,18 +299,13 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(7, 0, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(7, 175, 0, 0);
         add(buttonSair, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonGravarContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGravarContatoActionPerformed
         if (campoNome.getText().isEmpty() || campoNascimento.getText().isEmpty()
                 || campoEmail.getText().isEmpty()
-                || campoDdd1.getText().isEmpty()
-                || campoTelefone1.getText().isEmpty()
-                || campoDdd2.getText().isEmpty()
-                || campoTelefone2.getText().isEmpty()
                 || comboTipoContato.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
         } else {
@@ -309,7 +316,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
                  * Pegando Tipo de Contato da Combo box
                  */
                 TipoContato tipoContato = new TipoContato();
-                
+
                 String tipoContatoSelecionado = (String) comboTipoContato.getSelectedItem();
                 List<?> OBJECTS = tipoContatoDao.pesquisarTodos();
                 List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) OBJECTS;
@@ -333,24 +340,15 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
                 /**
                  * Primeiro telefone
                  */
-                Telefone telefone1 = new Telefone();
-                telefone1.setDdd(campoDdd1.getText());
-                telefone1.setNumero(campoTelefone1.getText());
                 /**
                  * Segundo telefone
                  */
-                Telefone telefone2 = new Telefone();
-                telefone2.setDdd(campoDdd2.getText());
-                telefone2.setNumero(campoTelefone2.getText());
                 /**
                  * Adicionando na lista
                  */
-                List<Telefone> TELEFONES = new ArrayList<>();
-                TELEFONES.add(telefone1);
-                TELEFONES.add(telefone2);
-                c.setTelefones(TELEFONES);
+                c.setTelefones(TELEFONES_DO_CONTATO);
                 Contato objPesquisado = (Contato) contatoDao.pesquisar(c.getId());
-                
+
                 if (objPesquisado != null) {
                     contatoDao.update(c);
                     JOptionPane.showMessageDialog(this, "Contato atualizado!");
@@ -366,7 +364,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "Problemas ao inserir");
                     }
                 }
-                
+
             } catch (Exception exception) {
                 try {
                     resetandoCampos();
@@ -376,57 +374,94 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
             }
         }
     }//GEN-LAST:event_buttonGravarContatoActionPerformed
-    
+
     public void resetandoCampos() {
         comboTipoContato.setSelectedIndex(0);
         campoNome.setText(null);
         campoEmail.setText(null);
         campoNascimento.setText(null);
         campoDdd1.setText(null);
-        campoDdd2.setText(null);
         campoTelefone1.setText(null);
-        campoTelefone2.setText(null);
     }
 
     private void campoDdd1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDdd1ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_campoDdd1ActionPerformed
 
-    private void campoDdd2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoDdd2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_campoDdd2ActionPerformed
+
+    }//GEN-LAST:event_campoDdd1ActionPerformed
 
     private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
         // TODO add your handling code here:
         try {
             PrincipalAgenda.JanelaPrincipalContato();
-            
+
         } catch (Exception exception) {
         }
 
     }//GEN-LAST:event_buttonSairActionPerformed
 
+    private void buttonAdicionarTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarTelefoneActionPerformed
+        // TODO add your handling code here:
+        Telefone telefone1 = new Telefone();
+        telefone1.setDdd(campoDdd1.getText());
+        telefone1.setNumero(campoTelefone1.getText());
+        TELEFONES_DO_CONTATO.add(telefone1);
+        adicionarListaTeleFonesTabela(TELEFONES_DO_CONTATO);
+
+
+    }//GEN-LAST:event_buttonAdicionarTelefoneActionPerformed
+
+    private void buttonExcluirTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirTelefoneActionPerformed
+        // TODO add your handling code here:
+        TelefoneDao telefoneDao = new TelefoneDaoImpl();
+        int linha = tabelaTelefone.getSelectedRow();
+        if (linha >= 0) {
+            String numeroContato = (String) tabelaTelefone.getValueAt(linha, 1);
+            for (int i = 0; i < TELEFONES_DO_CONTATO.size(); i++) {
+                Telefone get = TELEFONES_DO_CONTATO.get(i);
+                if (get.getNumero().equals(numeroContato)) {
+                    TELEFONES_DO_CONTATO.remove(get);
+
+                }
+            }
+            adicionarListaTeleFonesTabela(TELEFONES_DO_CONTATO);
+
+        }
+    }//GEN-LAST:event_buttonExcluirTelefoneActionPerformed
+
+    public void adicionarListaTeleFonesTabela(List<Telefone> Telefones) {
+        String[] colunas = {"DDD", "Numero"};
+        String[][] dados = new String[Telefones.size()][colunas.length];
+        for (int i = 0; i < Telefones.size(); i++) {
+            Telefone t = Telefones.get(i);
+            dados[i][0] = t.getDdd();
+            dados[i][1] = t.getNumero();
+
+        }
+        DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
+        tabelaTelefone.setModel(modelo);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonAdicionarTelefone;
+    private javax.swing.JButton buttonExcluirTelefone;
     private javax.swing.JButton buttonGravarContato;
     private javax.swing.JButton buttonSair;
     private javax.swing.JTextField campoDdd1;
-    private javax.swing.JTextField campoDdd2;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoNascimento;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoTelefone1;
-    private javax.swing.JTextField campoTelefone2;
     private javax.swing.JComboBox<String> comboTipoContato;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable tabelaTelefone;
     private javax.swing.JLabel textoDdd1;
-    private javax.swing.JLabel textoDdd2;
     private javax.swing.JLabel textoEmail;
     private javax.swing.JLabel textoNascimento;
     private javax.swing.JLabel textoNome;
     private javax.swing.JLabel textoTelefone1;
-    private javax.swing.JLabel textoTelefone2;
     private javax.swing.JLabel textoTipoContato;
     private javax.swing.JLabel tituloContato;
     // End of variables declaration//GEN-END:variables

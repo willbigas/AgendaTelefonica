@@ -40,6 +40,8 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
+        menuItemContato.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F1, 0));
+        menuItemContato.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
         menuItemContato.setText("Contato");
         menuItemContato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -48,7 +50,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         });
         menuCadastro.add(menuItemContato);
 
-        jMenuItem1.setText("TipoContato");
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F2, 0));
+        jMenuItem1.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        jMenuItem1.setText("Tipo de Contato");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -65,7 +69,9 @@ public class JanelaPrincipal extends javax.swing.JFrame {
             }
         });
 
-        menuExportarContatos.setText("Contatos");
+        menuExportarContatos.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_F3, 0));
+        menuExportarContatos.setFont(new java.awt.Font("Times New Roman", 1, 14)); // NOI18N
+        menuExportarContatos.setText("Contato [CSV]");
         menuExportarContatos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 menuExportarContatosActionPerformed(evt);

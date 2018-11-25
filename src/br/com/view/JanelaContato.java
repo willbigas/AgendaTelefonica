@@ -22,14 +22,14 @@ public class JanelaContato extends javax.swing.JPanel {
      */
     public JanelaContato(List<Contato> CONTATOS) throws Exception {
         initComponents();
-
+        
         if (CONTATOS != null) {
             adicionarListaContatosTabela(CONTATOS);
         } else {
             List<Contato> contatos = ManterContatoNegocio.pesquisar("");
             adicionarListaContatosTabela(contatos);
         }
-
+        
     }
 
     /**
@@ -56,7 +56,7 @@ public class JanelaContato extends javax.swing.JPanel {
 
         setLayout(new java.awt.GridBagLayout());
 
-        tituloContato.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        tituloContato.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         tituloContato.setText("Contato");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 15, 3);
@@ -105,7 +105,7 @@ public class JanelaContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(campoTextoBuscar, gridBagConstraints);
 
-        buttonBuscar.setText("Buscar");
+        buttonBuscar.setText("BUSCAR");
         buttonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBuscarActionPerformed(evt);
@@ -117,7 +117,7 @@ public class JanelaContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(buttonBuscar, gridBagConstraints);
 
-        buttonEditar.setText("Editar");
+        buttonEditar.setText("EDITAR");
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEditarActionPerformed(evt);
@@ -129,7 +129,7 @@ public class JanelaContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(buttonEditar, gridBagConstraints);
 
-        buttonNovo.setText("Novo");
+        buttonNovo.setText("NOVO");
         buttonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonNovoActionPerformed(evt);
@@ -141,7 +141,7 @@ public class JanelaContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(buttonNovo, gridBagConstraints);
 
-        buttonExcluir.setText("Excluir");
+        buttonExcluir.setText("EXCLUIR");
         buttonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExcluirActionPerformed(evt);
@@ -153,7 +153,7 @@ public class JanelaContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(buttonExcluir, gridBagConstraints);
 
-        buttonSair.setText("Sair");
+        buttonSair.setText("SAIR");
         buttonSair.setMaximumSize(new java.awt.Dimension(58, 32));
         buttonSair.setMinimumSize(new java.awt.Dimension(58, 32));
         buttonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -175,7 +175,7 @@ public class JanelaContato extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
-
+        
         List<Contato> contatos = null;
         try {
             contatos = ManterContatoNegocio.pesquisar(campoTextoBuscar.getText());
@@ -190,7 +190,7 @@ public class JanelaContato extends javax.swing.JPanel {
         int linha = tabelaContato.getSelectedRow();
         if (linha >= 0) {
             String idContato = (String) tabelaContato.getValueAt(linha, 0);
-
+            
             boolean apagou = false;
             ContatoDao contatoDao = new ContatoDaoImpl();
             try {
@@ -203,7 +203,7 @@ public class JanelaContato extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Contato excluído com sucesso!");
             } else {
                 JOptionPane.showMessageDialog(this, "Não foi possível excluir o contato , Verifique suas Dependencias");
-
+                
             }
         }
         try {
@@ -214,11 +214,15 @@ public class JanelaContato extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonExcluirActionPerformed
 
     private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
-        PrincipalAgenda.JanelaCadastroContato();
+        try {
+            
+            PrincipalAgenda.JanelaCadastroContato();
+        } catch (Exception exception) {
+        }
     }//GEN-LAST:event_buttonNovoActionPerformed
 
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
-
+        
         ContatoDao contatoDao = new ContatoDaoImpl();
         int linha = tabelaContato.getSelectedRow();
         if (linha >= 0) {
@@ -230,9 +234,12 @@ public class JanelaContato extends javax.swing.JPanel {
             } catch (Exception exception) {
             }
             if (c != null) {
-                PrincipalAgenda.JanelaCadastroContatoEdicao(c);
+                try {
+                    PrincipalAgenda.JanelaCadastroContatoEdicao(c);
+                } catch (Exception exception) {
+                }
             }
-
+            
         }
     }//GEN-LAST:event_buttonEditarActionPerformed
 
@@ -267,13 +274,13 @@ public class JanelaContato extends javax.swing.JPanel {
                 dados[i][2] = "Não informado";
             } else {
                 dados[i][2] = c.getTipoContato().getNome();
-
+                
             }
             dados[i][3] = c.getEmail();
-
+            
         }
         DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
         tabelaContato.setModel(modelo);
     }
-
+    
 }
