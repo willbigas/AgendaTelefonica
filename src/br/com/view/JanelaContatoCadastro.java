@@ -18,7 +18,7 @@ import javax.swing.JOptionPane;
  * @author William
  */
 public class JanelaContatoCadastro extends javax.swing.JPanel {
-
+    
     private Integer IDALTERACAO = null;
     private static Contato CONTATO_ATUAL = new Contato();
     private static ContatoDao contatoDao = new ContatoDaoImpl();
@@ -45,11 +45,11 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
             } catch (Exception exception) {
             }
         }
-
+        
         List<Telefone> telefones = ManterContatoNegocio.pesquisarTelefones("");
-
+        
     }
-
+    
     private void pegandoTipoContatoDoBanco() throws HeadlessException {
         List<TipoContato> TIPO_CONTATO = new ArrayList<>();
         try {
@@ -292,10 +292,9 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
 
     private void buttonGravarContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGravarContatoActionPerformed
         if (campoNome.getText().isEmpty() || campoNascimento.getText().isEmpty()
-                || campoEmail.getText().isEmpty() 
-                || campoDdd1.getText().isEmpty() 
-                || campoTelefone1.getText().isEmpty() 
-                || comboTipoContato.getSelectedIndex() == 0) {
+                || campoEmail.getText().isEmpty()
+                || campoDdd1.getText().isEmpty()
+                || campoTelefone1.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
         } else {
             try {
@@ -305,7 +304,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
                  * Pegando Tipo de Contato da Combo box
                  */
                 TipoContato tipoContato = new TipoContato();
-
+                
                 String tipoContatoSelecionado = (String) comboTipoContato.getSelectedItem();
                 List<?> OBJECTS = tipoContatoDao.pesquisarTodos();
                 List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) OBJECTS;
@@ -346,7 +345,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
                 TELEFONES.add(telefone2);
                 c.setTelefones(TELEFONES);
                 Contato objPesquisado = (Contato) contatoDao.pesquisar(c.getId());
-
+                
                 if (objPesquisado != null) {
                     contatoDao.update(c);
                     JOptionPane.showMessageDialog(this, "Contato atualizado!");
@@ -362,12 +361,17 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
                         JOptionPane.showMessageDialog(this, "Problemas ao inserir");
                     }
                 }
-
+                
             } catch (Exception exception) {
+                try {
+                    resetandoCampos();
+                    PrincipalAgenda.JanelaPrincipalContato();
+                } catch (Exception exception1) {
+                }
             }
         }
     }//GEN-LAST:event_buttonGravarContatoActionPerformed
-
+    
     public void resetandoCampos() {
         comboTipoContato.setSelectedIndex(0);
         campoNome.setText(null);
@@ -391,7 +395,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         // TODO add your handling code here:
         try {
             PrincipalAgenda.JanelaPrincipalContato();
-
+            
         } catch (Exception exception) {
         }
 

@@ -62,7 +62,7 @@ public class ContatoDaoImpl implements ContatoDao {
         try {
             conexao = SessionFactory.getConnection();
             PreparedStatement statement = conexao.prepareStatement(
-                    "update contato set nome = ? , nascimento = ? , email = ? , id_TipoContato where id = ? ");
+                    "update contato set nome = ? , nascimento = ? , email = ? , id_tipocontato = ? where id = ? ");
             statement.setString(1, cont.getNome());
             statement.setDate(2, new Date(cont.getNascimento().getTime()));
             statement.setString(3, cont.getEmail());
@@ -71,7 +71,7 @@ public class ContatoDaoImpl implements ContatoDao {
             } else {
                 statement.setInt(4, cont.getTipoContato().getId());
             }
-            statement.setInt(4, cont.getId());
+            statement.setInt(5, cont.getId());
             telefoneDao.excluirTelefoneContatos(cont.getId());
             gravarTelefones(cont);
             int linhasAtualizadas = statement.executeUpdate();
@@ -234,7 +234,7 @@ public class ContatoDaoImpl implements ContatoDao {
             conexao = SessionFactory.getConnection();
             PreparedStatement statement = conexao.prepareStatement(
                     "update contato set id_tipoContato = ? where id = ? ");
-            if (cont.getTipoContato().getId() == null) {
+            if (cont.getTipoContato() == null) {
                 statement.setNull(1, Types.INTEGER);
             } else {
                 statement.setInt(1, cont.getTipoContato().getId());

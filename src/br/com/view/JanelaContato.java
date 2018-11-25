@@ -2,7 +2,9 @@ package br.com.view;
 
 import br.com.agendatelefonica.PrincipalAgenda;
 import br.com.dao.ContatoDao;
+import br.com.dao.TelefoneDao;
 import br.com.daoImpl.ContatoDaoImpl;
+import br.com.daoImpl.TelefoneDaoImpl;
 import br.com.entidade.Contato;
 import br.com.negocio.ManterContatoNegocio;
 import java.util.List;
@@ -180,48 +182,31 @@ public class JanelaContato extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
-        ContatoDao contatoDao = new ContatoDaoImpl();
-        try {
-            int linha = tabelaContato.getSelectedRow();
-            if (linha >= 0) {
-                String idContato = (String) tabelaContato.getValueAt(linha, 0);
-                System.out.println("ID: " + idContato);
-                Object  obj = contatoDao.pesquisar(Integer.valueOf(idContato));
-                Contato contatoParaExcluir = (Contato) obj;
-                contatoParaExcluir.setTipoContato(null);
-                contatoDao.updateTipoContato(contatoParaExcluir);
-                boolean apagou = contatoDao.excluir(contatoParaExcluir.getId());
-                if (apagou) {
-                    JOptionPane.showMessageDialog(this, "Contato excluído com sucesso!");
-                    List<?> tipoContatos = contatoDao.pesquisarTodos();
-                    List<Contato> tipoC = (List<Contato>) (Object) tipoContatos;
-                    adicionarListaContatosTabela(tipoC);
-                } else {
-                    JOptionPane.showMessageDialog(this, "Não foi possível excluir o contato!");
-                }
-            }
-        } catch (Exception ex) {
-        }
+        TelefoneDao telefoneDao = new TelefoneDaoImpl();
+        int linha = tabelaContato.getSelectedRow();
+        if (linha >= 0) {
+            String idContato = (String) tabelaContato.getValueAt(linha, 0);
 
-//        int linha = tabelaContato.getSelectedRow();
-//        if (linha >= 0) {
-//            String idContato = (String) tabelaContato.getValueAt(linha, 0);
-//            boolean apagou = false;
-//            ContatoDao contatoDao = new ContatoDaoImpl();
-//            try {
-//                
-//                apagou = contatoDao.excluir(Integer.valueOf(idContato));
-//                System.out.println(idContato);
-//            } catch (Exception exception) {
-//            }
-//            
-//            if (apagou) {
-//                JOptionPane.showMessageDialog(this, "Contato excluído com sucesso!");
-//            } else {
-//                JOptionPane.showMessageDialog(this, "Não foi possível excluir o contato , Verifique suas Dependencias");
-//                
-//            }
-//        }
+            boolean apagou = false;
+            ContatoDao contatoDao = new ContatoDaoImpl();
+            try {
+                telefoneDao.excluirTelefoneContatos(Integer.valueOf(idContato));
+                apagou = contatoDao.excluir(Integer.valueOf(idContato));
+                System.out.println(idContato);
+            } catch (Exception exception) {
+            }
+            if (apagou) {
+                JOptionPane.showMessageDialog(this, "Contato excluído com sucesso!");
+            } else {
+                JOptionPane.showMessageDialog(this, "Não foi possível excluir o contato , Verifique suas Dependencias");
+
+            }
+        }
+        try {
+            List<Contato> contatos = ManterContatoNegocio.pesquisar("");
+            adicionarListaContatosTabela(contatos);
+        } catch (Exception exception) {
+        }
     }//GEN-LAST:event_buttonExcluirActionPerformed
 
     private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
@@ -274,8 +259,14 @@ public class JanelaContato extends javax.swing.JPanel {
             Contato c = contatos.get(i);
             dados[i][0] = c.getId().toString();
             dados[i][1] = c.getNome();
-            dados[i][2] = c.getTipoContato().getNome();
+            if (c.getTipoContato() == null) {
+                dados[i][2] = "Não informado";
+            } else {
+                dados[i][2] = c.getTipoContato().getNome();
+
+            }
             dados[i][3] = c.getEmail();
+
         }
         DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
         tabelaContato.setModel(modelo);
