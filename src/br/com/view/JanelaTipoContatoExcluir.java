@@ -42,7 +42,7 @@ public class JanelaTipoContatoExcluir extends javax.swing.JFrame {
 
         stringTipoContato = new javax.swing.JLabel();
         botaoExcluir = new javax.swing.JButton();
-        comboTipoContato = new javax.swing.JComboBox();
+        comboTipoContato = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -68,7 +68,7 @@ public class JanelaTipoContatoExcluir extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(6, 3, 6, 3);
         getContentPane().add(botaoExcluir, gridBagConstraints);
 
-        comboTipoContato.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione o Tipo" }));
+        comboTipoContato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Tipo" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -103,7 +103,7 @@ public class JanelaTipoContatoExcluir extends javax.swing.JFrame {
             List<?> list = tipoContatoDao.pesquisarTodos();
             TIPO_CONTATO = (List<TipoContato>) (Object) list;
             for (TipoContato tipoContato : TIPO_CONTATO) {
-                comboTipoContato.addItem(tipoContato);
+                comboTipoContato.addItem(tipoContato.getNome());
             }
         } catch (Exception exception) {
             JOptionPane.showMessageDialog(this, "Problemas no Banco" + exception.getStackTrace());
@@ -160,7 +160,7 @@ public class JanelaTipoContatoExcluir extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoExcluir;
-    private javax.swing.JComboBox comboTipoContato;
+    private javax.swing.JComboBox<String> comboTipoContato;
     private javax.swing.JLabel stringTipoContato;
     // End of variables declaration//GEN-END:variables
 }

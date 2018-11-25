@@ -92,7 +92,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         campoDdd2 = new javax.swing.JTextField();
         textoDdd1 = new javax.swing.JLabel();
         textoTipoContato = new javax.swing.JLabel();
-        comboTipoContato = new javax.swing.JComboBox();
+        comboTipoContato = new javax.swing.JComboBox<>();
         buttonSair = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
@@ -263,7 +263,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.gridy = 1;
         add(textoTipoContato, gridBagConstraints);
 
-        comboTipoContato.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Selecione Tipo" }));
+        comboTipoContato.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Tipo" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -292,7 +292,10 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
 
     private void buttonGravarContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGravarContatoActionPerformed
         if (campoNome.getText().isEmpty() || campoNascimento.getText().isEmpty()
-                || campoEmail.getText().isEmpty()) {
+                || campoEmail.getText().isEmpty() 
+                || campoDdd1.getText().isEmpty() 
+                || campoTelefone1.getText().isEmpty() 
+                || comboTipoContato.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(this, "Preencha todos os campos!");
         } else {
             try {
@@ -303,17 +306,17 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
                  */
                 TipoContato tipoContato = new TipoContato();
 
-                TipoContato tipoContatoCombo = (TipoContato) comboTipoContato.getSelectedItem();
+                String tipoContatoSelecionado = (String) comboTipoContato.getSelectedItem();
                 List<?> OBJECTS = tipoContatoDao.pesquisarTodos();
                 List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) OBJECTS;
                 c.setTipoContato(null);
                 for (int i = 0; i < TIPOCONTATO.size(); i++) {
                     TipoContato get = TIPOCONTATO.get(i);
-                    if (get.getNome().equals(tipoContatoCombo.getNome())) {
+                    if (get.getNome().equals(tipoContatoSelecionado)) {
                         tipoContato.setId(get.getId());
                         tipoContato.setNome(get.getNome());
                         c.setTipoContato(tipoContato);
-                    } 
+                    }
                 }
 
                 /**
@@ -405,7 +408,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoTelefone1;
     private javax.swing.JTextField campoTelefone2;
-    private javax.swing.JComboBox comboTipoContato;
+    private javax.swing.JComboBox<String> comboTipoContato;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel textoDdd1;

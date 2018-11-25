@@ -57,7 +57,7 @@ public class TelefoneDaoImpl implements TelefoneDao {
         try {
             conexao = SessionFactory.getConnection();
             PreparedStatement statement = conexao.prepareStatement(
-                    "update telefone set ddd = ? , set numero = ? , set id_contato = ? where id = ? ");
+                    "update telefone set ddd = ? ,  numero = ? , id_contato = ? where id = ? ");
             statement.setString(1, tel.getDdd());
             statement.setString(2, tel.getNumero());
             if (tel.getContato() == null) {

@@ -35,7 +35,11 @@ public class ContatoDaoImpl implements ContatoDao {
             statement.setString(1, cont.getNome());
             statement.setDate(2, new Date(cont.getNascimento().getTime()));
             statement.setString(3, cont.getEmail());
-            statement.setInt(4, cont.getTipoContato().getId());
+            if (cont.getTipoContato() == null) {
+                statement.setNull(4, Types.INTEGER);
+            } else {
+                statement.setInt(4, cont.getTipoContato().getId());
+            }
             statement.executeUpdate();
             ResultSet rs = statement.getGeneratedKeys();
             if (rs.next()) {
@@ -58,11 +62,11 @@ public class ContatoDaoImpl implements ContatoDao {
         try {
             conexao = SessionFactory.getConnection();
             PreparedStatement statement = conexao.prepareStatement(
-                    "update contato set nome = ? , set nascimento = ? , set email = ? , set id_TipoContato where id = ? ");
+                    "update contato set nome = ? , nascimento = ? , email = ? , id_TipoContato where id = ? ");
             statement.setString(1, cont.getNome());
             statement.setDate(2, new Date(cont.getNascimento().getTime()));
             statement.setString(3, cont.getEmail());
-            if (cont.getTipoContato().getId() == null) {
+            if (cont.getTipoContato() == null) {
                 statement.setNull(4, Types.INTEGER);
             } else {
                 statement.setInt(4, cont.getTipoContato().getId());
