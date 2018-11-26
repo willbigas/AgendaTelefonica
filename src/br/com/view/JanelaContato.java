@@ -52,12 +52,13 @@ public class JanelaContato extends javax.swing.JPanel {
         buttonEditar = new javax.swing.JButton();
         buttonNovo = new javax.swing.JButton();
         buttonExcluir = new javax.swing.JButton();
-        buttonSair = new javax.swing.JButton();
+        buttonVoltar = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new java.awt.GridBagLayout());
 
         tituloContato.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
-        tituloContato.setText("Contato");
+        tituloContato.setText("Lista de Contatos");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 15, 3);
         add(tituloContato, gridBagConstraints);
@@ -105,6 +106,7 @@ public class JanelaContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(campoTextoBuscar, gridBagConstraints);
 
+        buttonBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         buttonBuscar.setText("BUSCAR");
         buttonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +119,7 @@ public class JanelaContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(buttonBuscar, gridBagConstraints);
 
+        buttonEditar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         buttonEditar.setText("EDITAR");
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +132,7 @@ public class JanelaContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(buttonEditar, gridBagConstraints);
 
+        buttonNovo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         buttonNovo.setText("NOVO");
         buttonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -141,6 +145,7 @@ public class JanelaContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(buttonNovo, gridBagConstraints);
 
+        buttonExcluir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         buttonExcluir.setText("EXCLUIR");
         buttonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,25 +158,33 @@ public class JanelaContato extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         jPanel1.add(buttonExcluir, gridBagConstraints);
 
-        buttonSair.setText("SAIR");
-        buttonSair.setMaximumSize(new java.awt.Dimension(58, 32));
-        buttonSair.setMinimumSize(new java.awt.Dimension(58, 32));
-        buttonSair.addActionListener(new java.awt.event.ActionListener() {
+        buttonVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        buttonVoltar.setText("VOLTAR");
+        buttonVoltar.setMaximumSize(new java.awt.Dimension(58, 32));
+        buttonVoltar.setMinimumSize(new java.awt.Dimension(58, 32));
+        buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonSairActionPerformed(evt);
+                buttonVoltarActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 6;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel1.add(buttonSair, gridBagConstraints);
+        jPanel1.add(buttonVoltar, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
         add(jPanel1, gridBagConstraints);
+
+        jLabel1.setText("William Bigas Mauro - SENAC PALHOÇA");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        add(jLabel1, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
@@ -243,10 +256,10 @@ public class JanelaContato extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_buttonEditarActionPerformed
 
-    private void buttonSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonSairActionPerformed
+    private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
         // TODO add your handling code here:
-        System.exit(0);
-    }//GEN-LAST:event_buttonSairActionPerformed
+        this.setVisible(false);
+    }//GEN-LAST:event_buttonVoltarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -254,8 +267,9 @@ public class JanelaContato extends javax.swing.JPanel {
     private javax.swing.JButton buttonEditar;
     private javax.swing.JButton buttonExcluir;
     private javax.swing.JButton buttonNovo;
-    private javax.swing.JButton buttonSair;
+    private javax.swing.JButton buttonVoltar;
     private javax.swing.JTextField campoTextoBuscar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaContato;
