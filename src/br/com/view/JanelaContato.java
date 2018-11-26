@@ -202,7 +202,7 @@ public class JanelaContato extends javax.swing.JPanel {
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
 
         int dialogButton = JOptionPane.YES_NO_OPTION;
-        int resposta = JOptionPane.showConfirmDialog(this, "Você deseja Realmente excluir Esse contato?\r\nEsta Ação é irreversivel!", "Warning", dialogButton);
+        int resposta = JOptionPane.showConfirmDialog(this, "Você deseja Realmente excluir Esse contato?\r\nEsta Ação é irreversivel!", "ATENÇÃO!", dialogButton);
 
         if (resposta == JOptionPane.NO_OPTION) {
             return;

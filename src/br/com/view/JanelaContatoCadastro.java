@@ -36,6 +36,9 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
      */
     public JanelaContatoCadastro(Contato c) throws Exception {
         initComponents();
+        tabelaTelefone.getColumnModel().getColumn(0).setPreferredWidth(50);
+        tabelaTelefone.getColumnModel().getColumn(1).setPreferredWidth(200);
+
         adicionarListaTeleFonesTabela(telefoneDao.pesquisarTelefoneContatos(c));
         TELEFONES_DO_CONTATO = telefoneDao.pesquisarTelefoneContatos(c);
         pegandoTipoContatoDoBanco();
@@ -170,7 +173,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         add(buttonGravarContato, gridBagConstraints);
         add(jLabel7, new java.awt.GridBagConstraints());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("CADASTRO DE TELEFONE"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Telefone"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         campoDdd1.setColumns(3);
@@ -232,6 +235,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(4, 36, 4, 12);
         jPanel2.add(buttonExcluirTelefone, gridBagConstraints);
 
+        tabelaTelefone.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         tabelaTelefone.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -243,7 +247,12 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
                 "ddd", "Telefone"
             }
         ));
+        tabelaTelefone.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_LAST_COLUMN);
+        tabelaTelefone.setName(""); // NOI18N
         jScrollPane1.setViewportView(tabelaTelefone);
+        if (tabelaTelefone.getColumnModel().getColumnCount() > 0) {
+            tabelaTelefone.getColumnModel().getColumn(0).setPreferredWidth(1);
+        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
