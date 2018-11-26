@@ -4,6 +4,11 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/WILL/Documents/GitHub/AgendaTelefonica/src/br/com/agendatelefonica/PrincipalAgenda.java</file>
+            <file>file:/C:/Users/WILL/Documents/GitHub/AgendaTelefonica/src/br/com/view/JanelaContatoCadastro.java</file>
+            <file>file:/C:/Users/WILL/Documents/GitHub/AgendaTelefonica/src/br/com/daoImpl/ContatoDaoImpl.java</file>
+            <file>file:/C:/Users/WILL/Documents/GitHub/AgendaTelefonica/src/br/com/view/JanelaContato.java</file>
+            <file>file:/C:/Users/WILL/Documents/GitHub/AgendaTelefonica/src/br/com/view/JanelaExportarContatos.java</file>
+            <file>file:/C:/Users/WILL/Documents/GitHub/AgendaTelefonica/src/br/com/view/JanelaTipoContato.java</file>
         </group>
     </open-files>
 </project-private>
