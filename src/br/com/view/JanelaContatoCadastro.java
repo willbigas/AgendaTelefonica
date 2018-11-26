@@ -12,6 +12,7 @@ import br.com.entidade.Telefone;
 import br.com.entidade.TipoContato;
 import br.com.negocio.ManterContatoNegocio;
 import java.awt.HeadlessException;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -82,7 +83,6 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         textoNascimento = new javax.swing.JLabel();
         textoEmail = new javax.swing.JLabel();
         campoNome = new javax.swing.JTextField();
-        campoNascimento = new javax.swing.JTextField();
         campoEmail = new javax.swing.JTextField();
         buttonGravarContato = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
@@ -98,6 +98,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         textoTipoContato = new javax.swing.JLabel();
         comboTipoContato = new javax.swing.JComboBox<>();
         buttonSair = new javax.swing.JButton();
+        campoNascimento = new javax.swing.JFormattedTextField();
 
         setLayout(new java.awt.GridBagLayout());
 
@@ -143,14 +144,6 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(6, 4, 6, 4);
         add(campoNome, gridBagConstraints);
-
-        campoNascimento.setColumns(8);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 4, 6, 4);
-        add(campoNascimento, gridBagConstraints);
 
         campoEmail.setColumns(20);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -239,6 +232,11 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
                 buttonAdicionarTelefoneActionPerformed(evt);
             }
         });
+        buttonAdicionarTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buttonAdicionarTelefoneKeyPressed(evt);
+            }
+        });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -301,6 +299,19 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.ipadx = 4;
         gridBagConstraints.insets = new java.awt.Insets(7, 175, 0, 0);
         add(buttonSair, gridBagConstraints);
+
+        campoNascimento.setColumns(7);
+        try {
+            campoNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 5, 0, 0);
+        add(campoNascimento, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonGravarContatoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonGravarContatoActionPerformed
@@ -429,6 +440,11 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_buttonExcluirTelefoneActionPerformed
 
+    private void buttonAdicionarTelefoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAdicionarTelefoneKeyPressed
+
+// TODO add your handling code here:
+    }//GEN-LAST:event_buttonAdicionarTelefoneKeyPressed
+
     public void adicionarListaTeleFonesTabela(List<Telefone> Telefones) {
         String[] colunas = {"DDD", "Numero"};
         String[][] dados = new String[Telefones.size()][colunas.length];
@@ -449,7 +465,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
     private javax.swing.JButton buttonSair;
     private javax.swing.JTextField campoDdd1;
     private javax.swing.JTextField campoEmail;
-    private javax.swing.JTextField campoNascimento;
+    private javax.swing.JFormattedTextField campoNascimento;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoTelefone1;
     private javax.swing.JComboBox<String> comboTipoContato;
