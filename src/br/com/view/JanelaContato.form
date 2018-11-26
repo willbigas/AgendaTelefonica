@@ -25,7 +25,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="-1" gridY="-1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="3" insetsLeft="3" insetsBottom="15" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="1" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="3" insetsLeft="3" insetsBottom="15" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -40,7 +40,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="15" insetsLeft="3" insetsBottom="3" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="1" gridY="2" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="15" insetsLeft="3" insetsBottom="3" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
 
@@ -95,7 +95,7 @@
     <Container class="javax.swing.JPanel" name="jPanel1">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="3" insetsLeft="3" insetsBottom="3" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="1" gridY="1" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="3" insetsLeft="3" insetsBottom="3" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
 
@@ -130,7 +130,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="BUSCAR"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/icon_buscar_24x24.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonBuscarActionPerformed"/>
@@ -146,7 +148,9 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="EDITAR"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/icon_editar_24x24.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEditarActionPerformed"/>
@@ -162,14 +166,16 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="NOVO"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/icon_novo_24x24.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonNovoActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="5" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="3" insetsLeft="3" insetsBottom="3" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="4" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="3" insetsLeft="26" insetsBottom="3" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -178,36 +184,16 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Dialog" size="14" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="EXCLUIR"/>
+            <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+              <Image iconType="3" name="/img/icon_excluir_24x24.png"/>
+            </Property>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonExcluirActionPerformed"/>
           </Events>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="4" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="3" insetsLeft="3" insetsBottom="3" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
-            </Constraint>
-          </Constraints>
-        </Component>
-        <Component class="javax.swing.JButton" name="buttonVoltar">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Dialog" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="VOLTAR"/>
-            <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[58, 32]"/>
-            </Property>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[58, 32]"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonVoltarActionPerformed"/>
-          </Events>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-              <GridBagConstraints gridX="6" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="3" insetsLeft="3" insetsBottom="3" insetsRight="3" anchor="10" weightX="0.0" weightY="0.0"/>
+              <GridBagConstraints gridX="5" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="3" insetsLeft="1" insetsBottom="3" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
             </Constraint>
           </Constraints>
         </Component>
@@ -219,7 +205,31 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
-          <GridBagConstraints gridX="0" gridY="3" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="22" weightX="0.0" weightY="0.0"/>
+          <GridBagConstraints gridX="1" gridY="3" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="22" weightX="0.0" weightY="0.0"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JButton" name="buttonVoltar">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Dialog" size="14" style="1"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/img/icon_voltar_32x32.png"/>
+        </Property>
+        <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[58, 32]"/>
+        </Property>
+        <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+          <Dimension value="[58, 32]"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonVoltarActionPerformed"/>
+      </Events>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout" value="org.netbeans.modules.form.compat2.layouts.DesignGridBagLayout$GridBagConstraintsDescription">
+          <GridBagConstraints gridX="0" gridY="0" gridWidth="1" gridHeight="1" fill="0" ipadX="0" ipadY="0" insetsTop="0" insetsLeft="0" insetsBottom="0" insetsRight="0" anchor="10" weightX="0.0" weightY="0.0"/>
         </Constraint>
       </Constraints>
     </Component>

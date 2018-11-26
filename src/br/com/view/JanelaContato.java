@@ -22,14 +22,14 @@ public class JanelaContato extends javax.swing.JPanel {
      */
     public JanelaContato(List<Contato> CONTATOS) throws Exception {
         initComponents();
-        
+
         if (CONTATOS != null) {
             adicionarListaContatosTabela(CONTATOS);
         } else {
             List<Contato> contatos = ManterContatoNegocio.pesquisar("");
             adicionarListaContatosTabela(contatos);
         }
-        
+
     }
 
     /**
@@ -52,14 +52,16 @@ public class JanelaContato extends javax.swing.JPanel {
         buttonEditar = new javax.swing.JButton();
         buttonNovo = new javax.swing.JButton();
         buttonExcluir = new javax.swing.JButton();
-        buttonVoltar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        buttonVoltar = new javax.swing.JButton();
 
         setLayout(new java.awt.GridBagLayout());
 
         tituloContato.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         tituloContato.setText("Lista de Contatos");
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(3, 3, 15, 3);
         add(tituloContato, gridBagConstraints);
 
@@ -83,7 +85,7 @@ public class JanelaContato extends javax.swing.JPanel {
         }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(15, 3, 3, 3);
         add(jScrollPane1, gridBagConstraints);
@@ -107,7 +109,7 @@ public class JanelaContato extends javax.swing.JPanel {
         jPanel1.add(campoTextoBuscar, gridBagConstraints);
 
         buttonBuscar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        buttonBuscar.setText("BUSCAR");
+        buttonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscar_24x24.png"))); // NOI18N
         buttonBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonBuscarActionPerformed(evt);
@@ -120,7 +122,7 @@ public class JanelaContato extends javax.swing.JPanel {
         jPanel1.add(buttonBuscar, gridBagConstraints);
 
         buttonEditar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        buttonEditar.setText("EDITAR");
+        buttonEditar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_editar_24x24.png"))); // NOI18N
         buttonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonEditarActionPerformed(evt);
@@ -133,33 +135,46 @@ public class JanelaContato extends javax.swing.JPanel {
         jPanel1.add(buttonEditar, gridBagConstraints);
 
         buttonNovo.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        buttonNovo.setText("NOVO");
+        buttonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novo_24x24.png"))); // NOI18N
         buttonNovo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonNovoActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 4;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(3, 26, 3, 0);
         jPanel1.add(buttonNovo, gridBagConstraints);
 
         buttonExcluir.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        buttonExcluir.setText("EXCLUIR");
+        buttonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir_24x24.png"))); // NOI18N
         buttonExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExcluirActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridx = 5;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        gridBagConstraints.insets = new java.awt.Insets(3, 1, 3, 0);
         jPanel1.add(buttonExcluir, gridBagConstraints);
 
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
+        add(jPanel1, gridBagConstraints);
+
+        jLabel1.setText("William Bigas Mauro - SENAC PALHOÇA");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        add(jLabel1, gridBagConstraints);
+
         buttonVoltar.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        buttonVoltar.setText("VOLTAR");
+        buttonVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_voltar_32x32.png"))); // NOI18N
         buttonVoltar.setMaximumSize(new java.awt.Dimension(58, 32));
         buttonVoltar.setMinimumSize(new java.awt.Dimension(58, 32));
         buttonVoltar.addActionListener(new java.awt.event.ActionListener() {
@@ -168,27 +183,13 @@ public class JanelaContato extends javax.swing.JPanel {
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 6;
+        gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        jPanel1.add(buttonVoltar, gridBagConstraints);
-
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(3, 3, 3, 3);
-        add(jPanel1, gridBagConstraints);
-
-        jLabel1.setText("William Bigas Mauro - SENAC PALHOÇA");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        add(jLabel1, gridBagConstraints);
+        add(buttonVoltar, gridBagConstraints);
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
-        
+
         List<Contato> contatos = null;
         try {
             contatos = ManterContatoNegocio.pesquisar(campoTextoBuscar.getText());
@@ -199,43 +200,54 @@ public class JanelaContato extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonBuscarActionPerformed
 
     private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
-        TelefoneDao telefoneDao = new TelefoneDaoImpl();
-        int linha = tabelaContato.getSelectedRow();
-        if (linha >= 0) {
-            String idContato = (String) tabelaContato.getValueAt(linha, 0);
-            
-            boolean apagou = false;
-            ContatoDao contatoDao = new ContatoDaoImpl();
+
+        int dialogButton = JOptionPane.YES_NO_OPTION;
+        int resposta = JOptionPane.showConfirmDialog(this, "Você deseja Realmente excluir Esse contato?\r\nEsta Ação é irreversivel!", "Warning", dialogButton);
+
+        if (resposta == JOptionPane.NO_OPTION) {
+            return;
+        } else {
+            TelefoneDao telefoneDao = new TelefoneDaoImpl();
+            int linha = tabelaContato.getSelectedRow();
+            if (linha >= 0) {
+                String idContato = (String) tabelaContato.getValueAt(linha, 0);
+
+                boolean apagou = false;
+                ContatoDao contatoDao = new ContatoDaoImpl();
+                try {
+                    telefoneDao.excluirTelefoneContatos(Integer.valueOf(idContato));
+                    apagou = contatoDao.excluir(Integer.valueOf(idContato));
+                    System.out.println(idContato);
+                } catch (Exception exception) {
+                }
+                if (apagou) {
+                    JOptionPane.showMessageDialog(this, "Contato excluído com sucesso!");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Não foi possível excluir o contato , Verifique suas Dependencias");
+
+                }
+            }
             try {
-                telefoneDao.excluirTelefoneContatos(Integer.valueOf(idContato));
-                apagou = contatoDao.excluir(Integer.valueOf(idContato));
-                System.out.println(idContato);
+                List<Contato> contatos = ManterContatoNegocio.pesquisar("");
+                adicionarListaContatosTabela(contatos);
             } catch (Exception exception) {
             }
-            if (apagou) {
-                JOptionPane.showMessageDialog(this, "Contato excluído com sucesso!");
-            } else {
-                JOptionPane.showMessageDialog(this, "Não foi possível excluir o contato , Verifique suas Dependencias");
-                
-            }
+
         }
-        try {
-            List<Contato> contatos = ManterContatoNegocio.pesquisar("");
-            adicionarListaContatosTabela(contatos);
-        } catch (Exception exception) {
-        }
+
+
     }//GEN-LAST:event_buttonExcluirActionPerformed
 
     private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
         try {
-            
+
             PrincipalAgenda.JanelaCadastroContato();
         } catch (Exception exception) {
         }
     }//GEN-LAST:event_buttonNovoActionPerformed
 
     private void buttonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarActionPerformed
-        
+
         ContatoDao contatoDao = new ContatoDaoImpl();
         int linha = tabelaContato.getSelectedRow();
         if (linha >= 0) {
@@ -252,7 +264,7 @@ public class JanelaContato extends javax.swing.JPanel {
                 } catch (Exception exception) {
                 }
             }
-            
+
         }
     }//GEN-LAST:event_buttonEditarActionPerformed
 
@@ -288,13 +300,13 @@ public class JanelaContato extends javax.swing.JPanel {
                 dados[i][2] = "Não informado";
             } else {
                 dados[i][2] = c.getTipoContato().getNome();
-                
+
             }
             dados[i][3] = c.getEmail();
-            
+
         }
         DefaultTableModel modelo = new DefaultTableModel(dados, colunas);
         tabelaContato.setModel(modelo);
     }
-    
+
 }

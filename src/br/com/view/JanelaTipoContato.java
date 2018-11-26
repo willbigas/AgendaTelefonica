@@ -47,20 +47,18 @@ public class JanelaTipoContato extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        bottonNovoTipo.setText("NOVO");
-        bottonNovoTipo.setPreferredSize(new java.awt.Dimension(120, 32));
+        bottonNovoTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novo_24x24.png"))); // NOI18N
         bottonNovoTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bottonNovoTipoActionPerformed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(6, 0, 6, 0);
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(6, 0, 6, 59);
         getContentPane().add(bottonNovoTipo, gridBagConstraints);
 
-        bottonExcluirTipo.setText("EXCLUIR");
-        bottonExcluirTipo.setPreferredSize(new java.awt.Dimension(120, 32));
+        bottonExcluirTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir_24x24.png"))); // NOI18N
         bottonExcluirTipo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bottonExcluirTipoActionPerformed(evt);

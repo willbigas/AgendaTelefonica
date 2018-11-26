@@ -92,9 +92,9 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         textoTelefone1 = new javax.swing.JLabel();
         textoDdd1 = new javax.swing.JLabel();
         buttonExcluirTelefone = new javax.swing.JButton();
-        buttonAdicionarTelefone = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaTelefone = new javax.swing.JTable();
+        buttonAdicionarTelefone = new javax.swing.JButton();
         textoTipoContato = new javax.swing.JLabel();
         comboTipoContato = new javax.swing.JComboBox<>();
         buttonSair = new javax.swing.JButton();
@@ -170,7 +170,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         add(buttonGravarContato, gridBagConstraints);
         add(jLabel7, new java.awt.GridBagConstraints());
 
-        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Cadastro de Telefone"));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("CADASTRO DE TELEFONE"));
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
         campoDdd1.setColumns(3);
@@ -213,36 +213,24 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(2, 1, 2, 1);
         jPanel2.add(textoDdd1, gridBagConstraints);
 
-        buttonExcluirTelefone.setText("-");
+        buttonExcluirTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluirTelefone_24x24.png"))); // NOI18N
+        buttonExcluirTelefone.setPreferredSize(new java.awt.Dimension(40, 40));
         buttonExcluirTelefone.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonExcluirTelefoneActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(0, 0, 0, 4);
-        jPanel2.add(buttonExcluirTelefone, gridBagConstraints);
-
-        buttonAdicionarTelefone.setText("+");
-        buttonAdicionarTelefone.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAdicionarTelefoneActionPerformed(evt);
-            }
-        });
-        buttonAdicionarTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+        buttonExcluirTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                buttonAdicionarTelefoneKeyPressed(evt);
+                buttonExcluirTelefoneKeyPressed(evt);
             }
         });
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(4, 37, 4, 37);
-        jPanel2.add(buttonAdicionarTelefone, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(4, 36, 4, 12);
+        jPanel2.add(buttonExcluirTelefone, gridBagConstraints);
 
         tabelaTelefone.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -261,6 +249,25 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         jPanel2.add(jScrollPane1, gridBagConstraints);
+
+        buttonAdicionarTelefone.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_adicionarTelefone_24x24.png"))); // NOI18N
+        buttonAdicionarTelefone.setPreferredSize(new java.awt.Dimension(40, 40));
+        buttonAdicionarTelefone.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdicionarTelefoneActionPerformed(evt);
+            }
+        });
+        buttonAdicionarTelefone.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                buttonAdicionarTelefoneKeyPressed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(4, 37, 4, 58);
+        jPanel2.add(buttonAdicionarTelefone, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -300,7 +307,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.insets = new java.awt.Insets(7, 175, 0, 0);
         add(buttonSair, gridBagConstraints);
 
-        campoNascimento.setColumns(7);
+        campoNascimento.setColumns(9);
         try {
             campoNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -411,17 +418,6 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
 
     }//GEN-LAST:event_buttonSairActionPerformed
 
-    private void buttonAdicionarTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarTelefoneActionPerformed
-        // TODO add your handling code here:
-        Telefone telefone1 = new Telefone();
-        telefone1.setDdd(campoDdd1.getText());
-        telefone1.setNumero(campoTelefone1.getText());
-        TELEFONES_DO_CONTATO.add(telefone1);
-        adicionarListaTeleFonesTabela(TELEFONES_DO_CONTATO);
-
-
-    }//GEN-LAST:event_buttonAdicionarTelefoneActionPerformed
-
     private void buttonExcluirTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirTelefoneActionPerformed
         // TODO add your handling code here:
         TelefoneDao telefoneDao = new TelefoneDaoImpl();
@@ -438,11 +434,26 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
             adicionarListaTeleFonesTabela(TELEFONES_DO_CONTATO);
 
         }
+
+
     }//GEN-LAST:event_buttonExcluirTelefoneActionPerformed
 
-    private void buttonAdicionarTelefoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAdicionarTelefoneKeyPressed
+    private void buttonExcluirTelefoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonExcluirTelefoneKeyPressed
 
 // TODO add your handling code here:
+    }//GEN-LAST:event_buttonExcluirTelefoneKeyPressed
+
+    private void buttonAdicionarTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarTelefoneActionPerformed
+        // TODO add your handling code here:
+        Telefone telefone1 = new Telefone();
+        telefone1.setDdd(campoDdd1.getText());
+        telefone1.setNumero(campoTelefone1.getText());
+        TELEFONES_DO_CONTATO.add(telefone1);
+        adicionarListaTeleFonesTabela(TELEFONES_DO_CONTATO);
+    }//GEN-LAST:event_buttonAdicionarTelefoneActionPerformed
+
+    private void buttonAdicionarTelefoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAdicionarTelefoneKeyPressed
+        // TODO add your handling code here:
     }//GEN-LAST:event_buttonAdicionarTelefoneKeyPressed
 
     public void adicionarListaTeleFonesTabela(List<Telefone> Telefones) {
