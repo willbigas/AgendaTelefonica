@@ -17,6 +17,8 @@ public interface ContatoDao extends BaseDao {
     public boolean updateTipoContato(Object obj) throws Exception;
 
     public boolean updateTelefone(Object obj) throws Exception;
+    
+    public List<Object> pesquisarTodosOrdenadoPorNome() throws Exception;
 
     public List<Object> pesquisarTodosPorTipoOrdenadoPorNome(Integer idTipo) throws Exception;
     

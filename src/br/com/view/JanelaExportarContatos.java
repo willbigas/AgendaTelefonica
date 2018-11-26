@@ -53,20 +53,23 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        java.awt.GridBagConstraints gridBagConstraints;
 
         painelTabela = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaTipoTelefone = new javax.swing.JTable();
+        jPanel2 = new javax.swing.JPanel();
         painelExportacao = new javax.swing.JPanel();
         checkBoxNormal = new javax.swing.JCheckBox();
         checkboxTipo = new javax.swing.JCheckBox();
-        checkboxTipoENome = new javax.swing.JCheckBox();
         textoTipoExportacao = new javax.swing.JLabel();
         bottonExportar = new javax.swing.JButton();
+        painelOrdenacao = new javax.swing.JPanel();
+        textoTipoOrdenacao = new javax.swing.JLabel();
+        checkBoxTipoOrdenacaoNormal = new javax.swing.JCheckBox();
+        checkBoxTipoOrdenacaoNome = new javax.swing.JCheckBox();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        getContentPane().setLayout(new java.awt.GridBagLayout());
 
         tabelaTipoTelefone.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -86,50 +89,23 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
         painelTabela.setLayout(painelTabelaLayout);
         painelTabelaLayout.setHorizontalGroup(
             painelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelTabelaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelTabelaLayout.createSequentialGroup()
+                .addContainerGap(25, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         painelTabelaLayout.setVerticalGroup(
             painelTabelaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(painelTabelaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
-        getContentPane().add(painelTabela, new java.awt.GridBagConstraints());
-
-        painelExportacao.setLayout(new java.awt.GridBagLayout());
-
         checkBoxNormal.setText("Normal");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        painelExportacao.add(checkBoxNormal, gridBagConstraints);
 
         checkboxTipo.setText("Filtrado por Tipo");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        painelExportacao.add(checkboxTipo, gridBagConstraints);
-
-        checkboxTipoENome.setText("Filtrado por Tipo e Ordenado por nome");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        painelExportacao.add(checkboxTipoENome, gridBagConstraints);
 
         textoTipoExportacao.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
         textoTipoExportacao.setText("Tipos de Exportação");
         textoTipoExportacao.setPreferredSize(new java.awt.Dimension(12040, 12040));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.insets = new java.awt.Insets(11, 0, 11, 0);
-        painelExportacao.add(textoTipoExportacao, gridBagConstraints);
 
         bottonExportar.setText("Exportar");
         bottonExportar.addActionListener(new java.awt.event.ActionListener() {
@@ -137,81 +113,207 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
                 bottonExportarActionPerformed(evt);
             }
         });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(4, 3, 4, 3);
-        painelExportacao.add(bottonExportar, gridBagConstraints);
 
-        getContentPane().add(painelExportacao, new java.awt.GridBagConstraints());
+        javax.swing.GroupLayout painelExportacaoLayout = new javax.swing.GroupLayout(painelExportacao);
+        painelExportacao.setLayout(painelExportacaoLayout);
+        painelExportacaoLayout.setHorizontalGroup(
+            painelExportacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelExportacaoLayout.createSequentialGroup()
+                .addGroup(painelExportacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(painelExportacaoLayout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(bottonExportar))
+                    .addGroup(painelExportacaoLayout.createSequentialGroup()
+                        .addGap(28, 28, 28)
+                        .addGroup(painelExportacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkboxTipo)
+                            .addComponent(checkBoxNormal)))
+                    .addComponent(textoTipoExportacao, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        painelExportacaoLayout.setVerticalGroup(
+            painelExportacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelExportacaoLayout.createSequentialGroup()
+                .addComponent(textoTipoExportacao, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkBoxNormal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkboxTipo)
+                .addGap(26, 26, 26)
+                .addComponent(bottonExportar))
+        );
+
+        textoTipoOrdenacao.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
+        textoTipoOrdenacao.setText("Tipos de Ordenacao");
+
+        checkBoxTipoOrdenacaoNormal.setText("Normal");
+
+        checkBoxTipoOrdenacaoNome.setText("Nome");
+        checkBoxTipoOrdenacaoNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkBoxTipoOrdenacaoNomeActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout painelOrdenacaoLayout = new javax.swing.GroupLayout(painelOrdenacao);
+        painelOrdenacao.setLayout(painelOrdenacaoLayout);
+        painelOrdenacaoLayout.setHorizontalGroup(
+            painelOrdenacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelOrdenacaoLayout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addGroup(painelOrdenacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(checkBoxTipoOrdenacaoNome)
+                    .addComponent(checkBoxTipoOrdenacaoNormal))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelOrdenacaoLayout.createSequentialGroup()
+                .addContainerGap(46, Short.MAX_VALUE)
+                .addComponent(textoTipoOrdenacao)
+                .addGap(37, 37, 37))
+        );
+        painelOrdenacaoLayout.setVerticalGroup(
+            painelOrdenacaoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(painelOrdenacaoLayout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addComponent(textoTipoOrdenacao)
+                .addGap(18, 18, 18)
+                .addComponent(checkBoxTipoOrdenacaoNormal)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkBoxTipoOrdenacaoNome)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(painelExportacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(painelOrdenacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap(20, Short.MAX_VALUE)
+                .addComponent(painelOrdenacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(painelExportacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel1.setText("EXPORTACAO DE RELATÓRIO EM CSV");
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(painelTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel1)
+                .addGap(134, 134, 134))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(120, 120, 120)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(painelTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(125, 125, 125))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void bottonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonExportarActionPerformed
-        if (checkBoxNormal.isSelected() && checkboxTipo.isSelected() && checkboxTipoENome.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Selecione apenas um dos campos!");
+
+        if (validandoCampos()) {
             return;
         }
-        if (checkBoxNormal.isSelected() && checkboxTipo.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Selecione apenas um dos campos!");
-            return;
-        }
-        if (checkBoxNormal.isSelected() && checkboxTipoENome.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Selecione apenas um dos campos!");
-            return;
-        }
-        if (checkboxTipo.isSelected() && checkboxTipoENome.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Selecione apenas um dos campos!");
-            return;
-        }
-        if (checkBoxNormal.isSelected()) {
+        if (checkBoxNormal.isSelected() && checkBoxTipoOrdenacaoNormal.isSelected()) {
             seForNormal();
         }
-        if (checkboxTipo.isSelected()) {
-
-            int linha = tabelaTipoTelefone.getSelectedRow();
-            if (linha >= 0) {
-                String campoSelecionado = (String) tabelaTipoTelefone.getValueAt(linha, 0);
-                Integer campoIdTipoContatoSelecionado = Integer.valueOf(campoSelecionado);
-
-                try {
-
-                    String mensagem = null;
-                    List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
-                    for (int i = 0; i < TIPOCONTATO.size(); i++) {
-                        TipoContato get = TIPOCONTATO.get(i);
-                    }
-                    seForNormalComFiltroDeTipo(campoIdTipoContatoSelecionado);
-                } catch (Exception exception) {
-                }
-
-            }
+        if (checkBoxNormal.isSelected() && checkBoxTipoOrdenacaoNome.isSelected()) {
+            seForNormalComOrdenacaoPorNome();
         }
-        if (checkboxTipoENome.isSelected()) {
+        if (checkboxTipo.isSelected() && checkBoxTipoOrdenacaoNormal.isSelected()) {
+            seForTipo();
+        }
 
-            int linhaTipo = tabelaTipoTelefone.getSelectedRow();
-            if (linhaTipo >= 0) {
-                String campoSelecionadoTipo = (String) tabelaTipoTelefone.getValueAt(linhaTipo, 0);
-                Integer campoIdTipoContatoSelecionado = Integer.valueOf(campoSelecionadoTipo);
-
-                try {
-                    String mensagem = null;
-                    Integer id = null;
-                    List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
-                    for (int i = 0; i < TIPOCONTATO.size(); i++) {
-                        TipoContato get = TIPOCONTATO.get(i);
-                    }
-                    seForNormalComFiltroDeTipoOrdenadoPorNome(campoIdTipoContatoSelecionado);
-                } catch (Exception exception) {
-                }
-
-            }
+        if (checkBoxTipoOrdenacaoNome.isSelected() && checkboxTipo.isSelected()) {
+            seForTipoENome();
         }
 
 
     }//GEN-LAST:event_bottonExportarActionPerformed
+
+    private void checkBoxTipoOrdenacaoNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkBoxTipoOrdenacaoNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_checkBoxTipoOrdenacaoNomeActionPerformed
+
+    private void seForTipoENome() throws NumberFormatException {
+        int linhaTipo = tabelaTipoTelefone.getSelectedRow();
+        if (linhaTipo >= 0) {
+            String campoSelecionadoTipo = (String) tabelaTipoTelefone.getValueAt(linhaTipo, 0);
+            Integer campoIdTipoContatoSelecionado = Integer.valueOf(campoSelecionadoTipo);
+
+            try {
+                String mensagem = null;
+                Integer id = null;
+                List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
+                for (int i = 0; i < TIPOCONTATO.size(); i++) {
+                    TipoContato get = TIPOCONTATO.get(i);
+                }
+                seForNormalComFiltroDeTipoOrdenadoPorNome(campoIdTipoContatoSelecionado);
+            } catch (Exception exception) {
+            }
+
+        }
+    }
+
+    private void seForTipo() throws NumberFormatException {
+        int linha = tabelaTipoTelefone.getSelectedRow();
+        if (linha >= 0) {
+            String campoSelecionado = (String) tabelaTipoTelefone.getValueAt(linha, 0);
+            Integer campoIdTipoContatoSelecionado = Integer.valueOf(campoSelecionado);
+
+            try {
+
+                String mensagem = null;
+                List<TipoContato> TIPOCONTATO = (List<TipoContato>) (Object) tipoContatoDao.pesquisarTodos();
+                for (int i = 0; i < TIPOCONTATO.size(); i++) {
+                    TipoContato get = TIPOCONTATO.get(i);
+                }
+                seForNormalComFiltroDeTipo(campoIdTipoContatoSelecionado);
+            } catch (Exception exception) {
+            }
+
+        }
+    }
+
+    private boolean validandoCampos() throws HeadlessException {
+        if (checkboxTipo.isSelected() && checkBoxNormal.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Selecione apenas um dos campos!");
+            return true;
+        }
+        if (checkBoxTipoOrdenacaoNome.isSelected() && checkBoxTipoOrdenacaoNormal.isSelected()) {
+            JOptionPane.showMessageDialog(this, "Selecione apenas um dos campos!");
+            return true;
+        }
+        return false;
+    }
 
     public void seForNormal() throws HeadlessException {
         // TODO add your handling code here:
@@ -228,12 +330,37 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
             try {
                 String impressao = transformandoEmListaSimples();
                 br.com.utilpacket.Util_Arquivo.escreverArq(enderecoArquivo + ".csv", impressao);
+                JOptionPane.showMessageDialog(this, "Arquivo salvo com Sucesso!");
 
             } catch (Exception exception) {
             }
 
         }
     }
+    
+     public void seForNormalComOrdenacaoPorNome() throws HeadlessException {
+        // TODO add your handling code here:
+
+        JFileChooser chooser = new JFileChooser();
+        FileNameExtensionFilter filter = new FileNameExtensionFilter(
+                "Arquivo Csv - Excel 2007 ou Inferior", "csv");
+        chooser.setFileFilter(filter);
+        int returnVal = chooser.showSaveDialog(this);
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            String nomeArquivo = chooser.getSelectedFile().getName();
+            String enderecoArquivo = chooser.getSelectedFile().getPath();
+
+            try {
+                String impressao = transformandoEmListaSimplesOrdenadoPorNome();
+                br.com.utilpacket.Util_Arquivo.escreverArq(enderecoArquivo + ".csv", impressao);
+                JOptionPane.showMessageDialog(this, "Arquivo salvo com Sucesso!");
+
+            } catch (Exception exception) {
+            }
+
+        }
+    }
+    
 
     public void seForNormalComFiltroDeTipo(Integer id) throws HeadlessException {
         // TODO add your handling code here:
@@ -250,6 +377,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
             try {
                 String impressao = transformandoEmListaSimplesComFiltroDeTipo(id);
                 br.com.utilpacket.Util_Arquivo.escreverArq(enderecoArquivo + ".csv", impressao);
+                JOptionPane.showMessageDialog(this, "Arquivo salvo com Sucesso!");
 
             } catch (Exception exception) {
             }
@@ -272,6 +400,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
             try {
                 String impressao = transformandoEmListaSimplesComFiltroDeTipoOrdenadoPorNome(id);
                 br.com.utilpacket.Util_Arquivo.escreverArq(enderecoArquivo + ".csv", impressao);
+                JOptionPane.showMessageDialog(this, "Arquivo salvo com Sucesso!");
 
             } catch (Exception exception) {
             }
@@ -284,6 +413,23 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
 
         String impressao = new String();
         List<Contato> CONTATOS = (List<Contato>) (Object) contatoDao.pesquisarTodos();
+        for (int i = 0; i < CONTATOS.size(); i++) {
+            Contato get = CONTATOS.get(i);
+            List<Telefone> TELEFONES_DO_CONTATO = telefoneDao.pesquisarTelefoneContatos(get);
+            for (int j = 0; j < TELEFONES_DO_CONTATO.size(); j++) {
+                Telefone telContato = TELEFONES_DO_CONTATO.get(j);
+                impressao = impressao + get.getNome() + ";" + get.getEmail() + ";" + get.getNascimento() + ";" + get.getTipoContato().getNome() + ";" + "(" + telContato.getDdd() + ")" + telContato.getNumero() + ";\r\n";
+            }
+        }
+        return impressao;
+
+    }
+    
+    public static String transformandoEmListaSimplesOrdenadoPorNome() throws Exception {
+        // Opcao 1 //
+
+        String impressao = new String();
+        List<Contato> CONTATOS = (List<Contato>) (Object) contatoDao.pesquisarTodosOrdenadoPorNome();
         for (int i = 0; i < CONTATOS.size(); i++) {
             Contato get = CONTATOS.get(i);
             List<Telefone> TELEFONES_DO_CONTATO = telefoneDao.pesquisarTelefoneContatos(get);
@@ -366,13 +512,18 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bottonExportar;
     private javax.swing.JCheckBox checkBoxNormal;
+    private javax.swing.JCheckBox checkBoxTipoOrdenacaoNome;
+    private javax.swing.JCheckBox checkBoxTipoOrdenacaoNormal;
     private javax.swing.JCheckBox checkboxTipo;
-    private javax.swing.JCheckBox checkboxTipoENome;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel painelExportacao;
+    private javax.swing.JPanel painelOrdenacao;
     private javax.swing.JPanel painelTabela;
     private javax.swing.JTable tabelaTipoTelefone;
     private javax.swing.JLabel textoTipoExportacao;
+    private javax.swing.JLabel textoTipoOrdenacao;
     // End of variables declaration//GEN-END:variables
 public void adicionarListaTipoContatosTabela(List<TipoContato> tipoContatos) {
         String[] colunas = {"Codigo", "TipoContato"};

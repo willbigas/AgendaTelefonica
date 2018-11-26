@@ -328,4 +328,31 @@ public class ContatoDaoImpl implements ContatoDao {
 
     }
 
+    @Override
+    public List<Object> pesquisarTodosOrdenadoPorNome() throws Exception {
+        List<Object> contatos = new ArrayList<>();
+        try {
+            conexao = SessionFactory.getConnection();
+            PreparedStatement statement = conexao.prepareStatement(
+                    "select * from contato order by nome asc");
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Contato cont = new Contato();
+                cont.setNome(rs.getString("nome"));
+                cont.setEmail(rs.getString("email"));
+                cont.setNascimento(rs.getDate("nascimento"));
+                Integer idTipoContato = rs.getInt("id_TipoContato");
+                cont.setTipoContato((TipoContato) tipoContato.pesquisar(idTipoContato));
+                cont.setId(rs.getInt("id"));
+                contatos.add(cont);
+            }
+            return contatos;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            conexao.close();
+        }
+        return contatos;
+    }
+
 }

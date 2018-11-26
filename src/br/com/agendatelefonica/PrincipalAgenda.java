@@ -69,7 +69,7 @@ public class PrincipalAgenda {
     public static void JanelaExportarContatos() {
         JanelaExportarContatos frameCadastroExportarContatos = new JanelaExportarContatos();
         frameCadastroExportarContatos.setTitle("EXPORTAR CONTATO");
-        frameCadastroExportarContatos.setSize(750, 350);
+        frameCadastroExportarContatos.setSize(800, 650);
         frameCadastroExportarContatos.setLocationRelativeTo(null);
         frameCadastroExportarContatos.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frameCadastroExportarContatos.setVisible(true);

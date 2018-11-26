@@ -43,7 +43,7 @@ public class JanelaPrincipal extends javax.swing.JFrame {
         textoAgendaTelefonica.setText("AGENDA TELEFONICA");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setText("1.0.28 - Alfa Version");
+        jLabel1.setText("1.0.00 - Alfa Version");
 
         jLabel2.setText("William Bigas Mauro");
 
