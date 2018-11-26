@@ -320,7 +320,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
 
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "Arquivo Csv - Excel 2007 ou Inferior", "csv");
+                "Arquivo Csv - Excel 2007 ou Superior", "csv");
         chooser.setFileFilter(filter);
         int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -343,7 +343,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
 
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "Arquivo Csv - Excel 2007 ou Inferior", "csv");
+                "Arquivo Csv - Excel 2007 ou Superior", "csv");
         chooser.setFileFilter(filter);
         int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -367,7 +367,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
 
         JFileChooser chooser = new JFileChooser();
         FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "Arquivo Csv - Excel 2007 ou Inferior", "csv");
+                "Arquivo Csv - Excel 2007 ou Superior", "csv");
         chooser.setFileFilter(filter);
         int returnVal = chooser.showSaveDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
