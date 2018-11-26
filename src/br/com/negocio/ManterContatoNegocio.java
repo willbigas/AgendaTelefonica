@@ -1,9 +1,12 @@
 package br.com.negocio;
 
 import br.com.dao.ContatoDao;
+import br.com.dao.TipoContatoDao;
 import br.com.daoImpl.ContatoDaoImpl;
+import br.com.daoImpl.TipoContatoDaoImpl;
 import br.com.entidade.Contato;
 import br.com.entidade.Telefone;
+import br.com.entidade.TipoContato;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +18,7 @@ public class ManterContatoNegocio {
 
     private static List<Telefone> TELEFONES = new ArrayList();
     private static ContatoDao contatoDao = new ContatoDaoImpl();
+    private static TipoContatoDao tipoContatoDao = new TipoContatoDaoImpl();
 
     public static void adicionar(Contato contato) throws Exception {
         if (contato.getId() != null) {
@@ -34,10 +38,24 @@ public class ManterContatoNegocio {
         List<Contato> CONTATOS = (List<Contato>) (Object) objs;
 
         for (Contato contato : CONTATOS) {
-            if (contato.getNome().toLowerCase().contains(termo.toLowerCase()) 
-                    || contato.getEmail().toLowerCase().contains(termo.toLowerCase()) || 
-                    contato.getTipoContato().getNome().toLowerCase().contains(termo.toLowerCase()) ) {
+            if (contato.getNome().toLowerCase().contains(termo.toLowerCase())
+                    || contato.getEmail().toLowerCase().contains(termo.toLowerCase())
+                    || contato.getTipoContato().getNome().toLowerCase().contains(termo.toLowerCase())) {
                 retorno.add(contato);
+            }
+
+        }
+        return retorno;
+    }
+
+    public static List<TipoContato> pesquisarTipoContato(String termo) throws Exception {
+        List<TipoContato> retorno = new ArrayList();
+        List<?> objs = tipoContatoDao.pesquisarTodos();
+        List<TipoContato> TIPOS_DE_CONTATO = (List<TipoContato>) (Object) objs;
+
+        for (TipoContato tipoContato : TIPOS_DE_CONTATO) {
+            if (tipoContato.getNome().toLowerCase().contains(termo.toLowerCase())) {
+                retorno.add(tipoContato);
             }
 
         }

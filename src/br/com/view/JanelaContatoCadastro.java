@@ -154,7 +154,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         add(campoEmail, gridBagConstraints);
 
         buttonGravarContato.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        buttonGravarContato.setText("Gravar");
+        buttonGravarContato.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_gravar_24x24.png"))); // NOI18N
         buttonGravarContato.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonGravarContatoActionPerformed(evt);
@@ -291,7 +291,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         add(comboTipoContato, gridBagConstraints);
 
         buttonSair.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        buttonSair.setText("Voltar");
+        buttonSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_voltar_24x24.png"))); // NOI18N
         buttonSair.setMaximumSize(new java.awt.Dimension(85, 36));
         buttonSair.setMinimumSize(new java.awt.Dimension(85, 36));
         buttonSair.addActionListener(new java.awt.event.ActionListener() {
@@ -304,7 +304,7 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.ipadx = 4;
-        gridBagConstraints.insets = new java.awt.Insets(7, 175, 0, 0);
+        gridBagConstraints.insets = new java.awt.Insets(7, 248, 0, 0);
         add(buttonSair, gridBagConstraints);
 
         campoNascimento.setColumns(9);
@@ -445,11 +445,21 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
 
     private void buttonAdicionarTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdicionarTelefoneActionPerformed
         // TODO add your handling code here:
-        Telefone telefone1 = new Telefone();
-        telefone1.setDdd(campoDdd1.getText());
-        telefone1.setNumero(campoTelefone1.getText());
-        TELEFONES_DO_CONTATO.add(telefone1);
-        adicionarListaTeleFonesTabela(TELEFONES_DO_CONTATO);
+        if (campoDdd1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha o campo de DDD para Adicionar um Telefone!");
+            return;
+        }
+        if (campoTelefone1.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Preencha o campo de Telefone para Adicionar um Telefone!");
+            return;
+        } else {
+            Telefone telefone1 = new Telefone();
+            telefone1.setDdd(campoDdd1.getText());
+            telefone1.setNumero(campoTelefone1.getText());
+            TELEFONES_DO_CONTATO.add(telefone1);
+            adicionarListaTeleFonesTabela(TELEFONES_DO_CONTATO);
+        }
+
     }//GEN-LAST:event_buttonAdicionarTelefoneActionPerformed
 
     private void buttonAdicionarTelefoneKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_buttonAdicionarTelefoneKeyPressed

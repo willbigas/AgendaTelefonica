@@ -4,6 +4,7 @@ import br.com.agendatelefonica.PrincipalAgenda;
 import br.com.dao.TipoContatoDao;
 import br.com.daoImpl.TipoContatoDaoImpl;
 import br.com.entidade.TipoContato;
+import br.com.negocio.ManterContatoNegocio;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -39,37 +40,17 @@ public class JanelaTipoContato extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        bottonNovoTipo = new javax.swing.JButton();
-        bottonExcluirTipo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelaTipoContato = new javax.swing.JTable();
+        jPanel1 = new javax.swing.JPanel();
+        buttonNovo = new javax.swing.JButton();
+        buttonExcluir = new javax.swing.JButton();
+        buttonBuscar = new javax.swing.JButton();
+        campoBuscar = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new java.awt.GridBagLayout());
-
-        bottonNovoTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novo_24x24.png"))); // NOI18N
-        bottonNovoTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bottonNovoTipoActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(6, 0, 6, 59);
-        getContentPane().add(bottonNovoTipo, gridBagConstraints);
-
-        bottonExcluirTipo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir_24x24.png"))); // NOI18N
-        bottonExcluirTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bottonExcluirTipoActionPerformed(evt);
-            }
-        });
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(6, 0, 6, 0);
-        getContentPane().add(bottonExcluirTipo, gridBagConstraints);
 
         tabelaTipoContato.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -90,12 +71,67 @@ public class JanelaTipoContato extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         getContentPane().add(jScrollPane1, gridBagConstraints);
 
+        jPanel1.setLayout(new java.awt.GridBagLayout());
+
+        buttonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_novo_24x24.png"))); // NOI18N
+        buttonNovo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonNovoActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(6, 3, 6, 62);
+        jPanel1.add(buttonNovo, gridBagConstraints);
+
+        buttonExcluir.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_excluir_24x24.png"))); // NOI18N
+        buttonExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonExcluirActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 4;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.insets = new java.awt.Insets(6, 3, 6, 3);
+        jPanel1.add(buttonExcluir, gridBagConstraints);
+
+        buttonBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icon_buscar_24x24.png"))); // NOI18N
+        buttonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBuscarActionPerformed(evt);
+            }
+        });
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 3, 0, 3);
+        jPanel1.add(buttonBuscar, gridBagConstraints);
+
+        campoBuscar.setColumns(9);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 2, 0, 5);
+        jPanel1.add(campoBuscar, gridBagConstraints);
+
+        jLabel1.setText("BUSCAR");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 13, 0, 11);
+        jPanel1.add(jLabel1, gridBagConstraints);
+
+        getContentPane().add(jPanel1, new java.awt.GridBagConstraints());
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void bottonNovoTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonNovoTipoActionPerformed
+    private void buttonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonNovoActionPerformed
         // TODO add your handling code here:
-
         TipoContato tipoContato = new TipoContato();
         String mensagem = JOptionPane.showInputDialog("Digite o nome do Tipo de Contato");
         tipoContato.setNome(mensagem);
@@ -118,11 +154,10 @@ public class JanelaTipoContato extends javax.swing.JFrame {
         }
 
 
-    }//GEN-LAST:event_bottonNovoTipoActionPerformed
+    }//GEN-LAST:event_buttonNovoActionPerformed
 
-    private void bottonExcluirTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonExcluirTipoActionPerformed
+    private void buttonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExcluirActionPerformed
         // TODO add your handling code here:
-
         int linha = tabelaTipoContato.getSelectedRow();
         if (linha >= 0) {
             String campoSelecionado = (String) tabelaTipoContato.getValueAt(linha, 0);
@@ -146,7 +181,20 @@ public class JanelaTipoContato extends javax.swing.JFrame {
             adicionarListaTipoContatosTabela(tipoContatos);
         } catch (Exception exception) {
         }
-    }//GEN-LAST:event_bottonExcluirTipoActionPerformed
+
+    }//GEN-LAST:event_buttonExcluirActionPerformed
+
+    private void buttonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBuscarActionPerformed
+        // TODO add your handling code here:
+        
+          List<TipoContato> contatos = null;
+        try {
+            contatos = ManterContatoNegocio.pesquisarTipoContato(campoBuscar.getText());
+        } catch (Exception exception) {
+        }
+        adicionarListaTipoContatosTabela(contatos);
+        
+    }//GEN-LAST:event_buttonBuscarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,8 +245,12 @@ public class JanelaTipoContato extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton bottonExcluirTipo;
-    private javax.swing.JButton bottonNovoTipo;
+    private javax.swing.JButton buttonBuscar;
+    private javax.swing.JButton buttonExcluir;
+    private javax.swing.JButton buttonNovo;
+    private javax.swing.JTextField campoBuscar;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelaTipoContato;
     // End of variables declaration//GEN-END:variables
