@@ -238,7 +238,15 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void bottonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bottonExportarActionPerformed
-
+        if (!checkBoxNormal.isSelected() && !checkboxTipo.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Selecione Pelomenos um item de cada Tipo!");
+            return;
+        }
+        
+        if (!checkBoxTipoOrdenacaoNome.isSelected() && !checkBoxTipoOrdenacaoNormal.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Selecione Pelomenos um item de cada Ordenação!");
+            return;
+        }
         if (validandoCampos()) {
             return;
         }
@@ -304,12 +312,13 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
     }
 
     private boolean validandoCampos() throws HeadlessException {
-        if (checkboxTipo.isSelected() && checkBoxNormal.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Selecione apenas um dos campos!");
+
+        if (!checkboxTipo.isSelected() && !checkBoxNormal.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Selecione apenas um Tipo!");
             return true;
         }
         if (checkBoxTipoOrdenacaoNome.isSelected() && checkBoxTipoOrdenacaoNormal.isSelected()) {
-            JOptionPane.showMessageDialog(this, "Selecione apenas um dos campos!");
+            JOptionPane.showMessageDialog(null, "Selecione apenas um dos campos!");
             return true;
         }
         return false;
@@ -337,8 +346,8 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
 
         }
     }
-    
-     public void seForNormalComOrdenacaoPorNome() throws HeadlessException {
+
+    public void seForNormalComOrdenacaoPorNome() throws HeadlessException {
         // TODO add your handling code here:
 
         JFileChooser chooser = new JFileChooser();
@@ -360,7 +369,6 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
 
         }
     }
-    
 
     public void seForNormalComFiltroDeTipo(Integer id) throws HeadlessException {
         // TODO add your handling code here:
@@ -424,7 +432,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
         return impressao;
 
     }
-    
+
     public static String transformandoEmListaSimplesOrdenadoPorNome() throws Exception {
         // Opcao 1 //
 
