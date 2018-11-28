@@ -4,6 +4,7 @@ Agenda Telefonica Implementado com Interface Swing
 
 Janela Principal
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/Rbts6W2"><a href="//imgur.com/Rbts6W2"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+<img src="https://i.imgur.com/OkLF4VH.png" alt="Girl in a jacket" style="width:500px;height:600px;">
+
 
 
