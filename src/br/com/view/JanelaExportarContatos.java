@@ -15,6 +15,7 @@ import br.com.entidade.Contato;
 import br.com.entidade.Telefone;
 import br.com.entidade.TipoContato;
 import java.awt.HeadlessException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
@@ -474,8 +475,22 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
 
     public static String transformandoEmListaSimplesComFiltroDeTipoOrdenadoPorNome(Integer id) throws Exception {
         // Opcao 1 //
-        String impressao = new String();
+        String impressao = "";
         List<Object> object = contatoDao.pesquisarTodosPorTipoOrdenadoPorNome(id);
+//        List<Contato> listaContato = new ArrayList<>();
+//        for (int i = 0; i < object.size(); i++) {
+//            Contato get = (Contato) object.get(i);
+//            listaContato.add(get);
+//        }
+//        for (Contato c : listaContato) {
+//            impressao += c.getNome() + ";" + c.getEmail() + ";" + c.getNascimento() + ";";
+//            for (Telefone t : c.getTelefones()) {
+//                impressao += t.getDdd() + ";" + t.getNumero() + ";";
+//            }
+//            impressao += "\r\n";
+//        }
+//        return impressao;
+
         for (int i = 0; i < object.size(); i++) {
             Contato get = (Contato) object.get(i);
             List<Telefone> TELEFONES_DO_CONTATO = telefoneDao.pesquisarTelefoneContatos(get);
