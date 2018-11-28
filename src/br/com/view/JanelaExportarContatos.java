@@ -242,7 +242,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione Pelomenos um item de cada Tipo!");
             return;
         }
-        
+
         if (!checkBoxTipoOrdenacaoNome.isSelected() && !checkBoxTipoOrdenacaoNormal.isSelected()) {
             JOptionPane.showMessageDialog(null, "Selecione Pelomenos um item de cada Ordenação!");
             return;
@@ -275,6 +275,7 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
         int linhaTipo = tabelaTipoTelefone.getSelectedRow();
         if (linhaTipo >= 0) {
             String campoSelecionadoTipo = (String) tabelaTipoTelefone.getValueAt(linhaTipo, 0);
+
             Integer campoIdTipoContatoSelecionado = Integer.valueOf(campoSelecionadoTipo);
 
             try {
@@ -288,6 +289,8 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
             } catch (Exception exception) {
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum Tipo de Contato Selecionado , Favor Selecione um!");
         }
     }
 
@@ -308,6 +311,8 @@ public class JanelaExportarContatos extends javax.swing.JFrame {
             } catch (Exception exception) {
             }
 
+        } else {
+            JOptionPane.showMessageDialog(null, "Nenhum Tipo de Contato Selecionado , Favor Selecione um!");
         }
     }
 

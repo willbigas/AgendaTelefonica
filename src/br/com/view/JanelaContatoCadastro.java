@@ -39,11 +39,11 @@ public class JanelaContatoCadastro extends javax.swing.JPanel {
         tabelaTelefone.getColumnModel().getColumn(0).setPreferredWidth(50);
         tabelaTelefone.getColumnModel().getColumn(1).setPreferredWidth(200);
 
-        adicionarListaTeleFonesTabela(telefoneDao.pesquisarTelefoneContatos(c));
         TELEFONES_DO_CONTATO = telefoneDao.pesquisarTelefoneContatos(c);
         pegandoTipoContatoDoBanco();
         CONTATO_ATUAL = c;
         if (c != null) {
+            adicionarListaTeleFonesTabela(telefoneDao.pesquisarTelefoneContatos(c));
             try {
                 comboTipoContato.setSelectedItem(c.getTipoContato().getNome());
                 campoNome.setText(c.getNome());
